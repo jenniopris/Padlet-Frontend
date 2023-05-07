@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {Entry} from "../shared/entry";
+import {EntryFactory} from "../shared/entry-factory";
+import {PadletApiService} from "../shared/padlet-api.service";
 
 @Component({
   selector: 'pd-entry-details',
@@ -6,6 +10,20 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class EntryDetailsComponent {
+export class EntryDetailsComponent implements OnInit {
 
+  entry: Entry = EntryFactory.empty();
+  buttonRouterLink: string = '';
+
+  constructor(
+    private ps: PadletApiService,
+    private route: ActivatedRoute,
+  ) {
+  }
+
+  ngOnInit() {
+    const params = this.route.snapshot.params;
+    this.buttonRouterLink = '/padlets/' + params['padletId'];
+    this.ps.getEntryById(params['entryId']).subscribe(res => this.entry = res);
+  }
 }
