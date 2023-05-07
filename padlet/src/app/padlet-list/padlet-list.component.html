@@ -1,8 +1,8 @@
+<h1>Padlets</h1>
+
 <div class="ui middle aligned selection divided list">
-  <a *ngFor="let padlet of padlets" class="item">
-    <div class="content">
-      <div class="header">{{padlet.name}}</div>
-      <p>{{padlet.user.first_name}} {{padlet.user.last_name}}
-    </div>
+  <a *ngFor="let padlet of padlets" class="item pd-padlet-list-item"
+     [padlet]="padlet"
+     [routerLink]="padlet.id.toString()">
   </a>
 </div>
