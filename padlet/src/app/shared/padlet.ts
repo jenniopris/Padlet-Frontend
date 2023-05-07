@@ -7,7 +7,6 @@ export class Padlet {
   constructor(public id: number,
               public name: string,
               public is_public: boolean,
-              public user_id: number,
-              public entry_id: Entry[],) {
+              public user: User){
   }
 }

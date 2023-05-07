@@ -1,0 +1,8 @@
+<div class="ui middle aligned selection divided list">
+  <a *ngFor="let padlet of padlets" class="item">
+    <div class="content">
+      <div class="header">{{padlet.name}}</div>
+      <p>{{padlet.user.first_name}} {{padlet.user.last_name}}
+    </div>
+  </a>
+</div>
