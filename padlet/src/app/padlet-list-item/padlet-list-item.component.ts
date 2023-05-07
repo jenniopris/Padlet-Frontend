@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Padlet} from "../shared/padlet";
+import {Entry} from "../shared/entry";
 import {PadletFactory} from "../shared/padlet-factory";
 
 @Component({

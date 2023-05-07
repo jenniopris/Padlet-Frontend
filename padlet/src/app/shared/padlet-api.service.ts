@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Padlet} from "./padlet";
+import {Entry, Padlet} from "./padlet";
 import {catchError, Observable, retry, throwError} from "rxjs";
 
 @Injectable({
@@ -18,6 +18,11 @@ export class PadletApiService {
 
   getSingle(id: string): Observable<Padlet> {
     return this.http.get<Padlet>(`${this.api}/padlets/${id}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  getEntriesById(id: string): Observable<Array<Entry>> {
+    return this.http.get<Array<Entry>>(`${this.api}/entries/padlet/${id}`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 

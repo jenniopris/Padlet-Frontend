@@ -1,2 +1,12 @@
 <p>padlet-details works!</p>
+
+<h1>Padlet Detail View (Entries)</h1>
+
+<div class="ui middle aligned selection divided list">
+  <a *ngFor="let entry of entries" class="item pd-entry-list-item"
+     [entry]="entry"
+     [routerLink]="entry.id.toString()">
+  </a>
+</div>
+
 <button [routerLink]="'/padlets'" class="ui red button">Zurück zur Padletliste</button>
