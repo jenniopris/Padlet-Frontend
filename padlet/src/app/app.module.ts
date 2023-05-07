@@ -8,7 +8,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {PadletDetailsComponent} from './padlet-details/padlet-details.component';
 import {PadletListItemComponent} from './padlet-list-item/padlet-list-item.component';
 import {EntryDetailsComponent} from './entry-details/entry-details.component';
-import {EntryListItemComponent} from './entry-list-item/entry-list-item.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import {EntryListItemComponent} from './entry-list-item/entry-list-item.componen
     PadletDetailsComponent,
     PadletListItemComponent,
     EntryDetailsComponent,
-    EntryListItemComponent,
   ],
   imports: [
     BrowserModule,

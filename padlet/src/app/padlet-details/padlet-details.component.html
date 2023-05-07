@@ -1,8 +1,61 @@
-<p>padlet-details works!</p>
+<!--div class="ui container">
+  <div class="ui middle aligned centered grid" style="text-align: left">
+    <div class="ui grid">
+      <div class="content">
+        <h2 class="ui header">
+          <div class="content"><h1>Padlet Detail View (Entries)</h1></div>
+        </h2>
+        <p>padlet-details works!</p>
+      </div>
+    </div>
+  </div>
+</div-->
 
-<h1>Padlet Detail View (Entries)</h1>
+<div class="ui container">
+  <div class="ui four grid">
+    <a *ngFor="let entry of entries">
+      <div class="ui card">
+        <div class="content">
 
-<div class="ui middle aligned selection divided list">
+          <h2 class="ui header">
+            <div class="content">{{entry.name}}</div>
+          </h2>
+
+          <p>{{entry.content}}</p>
+
+          <div class="ui horizontal list">
+            <div class="item">
+              <img class="ui mini circular image" src="/assets/molly.png">
+              <div class="content">
+                <div class="ui sub header">{{entry.user.first_name}} {{entry.user.last_name}}</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button [routerLink]="entry.id.toString()" class="ui animated button" tabindex="0">
+          <div class="visible content">Open</div>
+          <div class="hidden content">
+            <i class="right arrow icon"></i>
+          </div>
+        </button>
+
+      </div>
+    </a>
+  </div>
+
+  <div class="ui divider"></div>
+
+  <div [routerLink]="'/padlets'" class="ui sticky bottom attached fluid icon button" style="bottom: 0;">
+    <i class="left chevron icon"></i>
+    Zurück zur Padletliste
+  </div>
+
+</div>
+
+
+<!--div class="ui middle aligned selection divided list">
   <a *ngFor="let entry of entries" class="item pd-entry-list-item"
      [entry]="entry"
      [routerLink]="entry.id.toString()">
@@ -12,4 +65,4 @@
 <button [routerLink]="'/padlets'" class="ui labeled icon button">
   <i class="left chevron icon"></i>
   Zurück zur Padletliste
-</button>
+</button-->
