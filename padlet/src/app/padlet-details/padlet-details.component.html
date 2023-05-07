@@ -12,9 +12,15 @@
 </div-->
 
 <div class="ui container">
-  <div class="ui four grid">
+  <button class="ui right floated button">
+    <i class="add icon"></i>Create new Entry
+  </button>
+
+  <h1 class="ui header">{{ padlet.name }}</h1>
+  <p>Here are your entries for this padlet:</p>
+  <div class="ui grid" style="margin-top: 2rem;">
     <a *ngFor="let entry of entries">
-      <div class="ui card">
+      <div class="ui card" style="margin-bottom: 1rem">
         <div class="content">
 
           <h2 class="ui header">
@@ -45,11 +51,11 @@
     </a>
   </div>
 
-  <div class="ui divider"></div>
+  <div class="ui divider" style="margin-top: 2rem; margin-bottom: 1rem"></div>
 
   <div [routerLink]="'/padlets'" class="ui sticky bottom attached fluid icon button" style="bottom: 0;">
     <i class="left chevron icon"></i>
-    Zurück zur Padletliste
+    Go back to your padlets
   </div>
 
 </div>

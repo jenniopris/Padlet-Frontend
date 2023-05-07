@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PadletApiService} from "../shared/padlet-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Entry, Padlet} from "../shared/padlet";
@@ -10,9 +10,9 @@ import {PadletFactory} from "../shared/padlet-factory";
   styles: [
   ]
 })
-export class PadletDetailsComponent {
+export class PadletDetailsComponent implements OnInit {
 
-  @Output() showListEvent = new EventEmitter<any>();
+  padlet: Padlet = PadletFactory.empty();
   entries: Entry[] = [];
 
   constructor(
@@ -23,6 +23,7 @@ export class PadletDetailsComponent {
   }
   ngOnInit() {
     const params = this.route.snapshot.params;
+    this.ps.getSingle(params['id']).subscribe(res => this.padlet = res);
     this.ps.getEntriesById(params['id']).subscribe(res => this.entries = res);
   }
 }

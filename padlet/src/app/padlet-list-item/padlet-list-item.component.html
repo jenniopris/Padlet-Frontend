@@ -1,4 +1,32 @@
-<div class="content">
+<!--div class="content">
   <div class="header">{{padlet.name}}</div>
   <p>{{padlet.user.first_name}} {{padlet.user.last_name}}
+</div-->
+
+
+<div class="ui card" style="margin-bottom: 1rem">
+  <div class="content">
+
+    <h2 class="ui header">
+      <div class="content">{{padlet.name}}</div>
+    </h2>
+
+    <div class="ui horizontal list">
+      <div class="item">
+        <img class="ui mini circular image" src="/assets/molly.png">
+        <div class="content">
+          <div class="ui sub header">{{padlet.user.first_name}} {{padlet.user.last_name}}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <button [routerLink]="padlet.id.toString()" class="ui animated button" tabindex="0">
+    <div class="visible content">Open</div>
+    <div class="hidden content">
+      <i class="right arrow icon"></i>
+    </div>
+  </button>
+
 </div>

@@ -1,8 +1,24 @@
-<h1>Padlets</h1>
+<div class="ui container">
+  <button class="ui right floated button">
+    <i class="add icon"></i>Create new Padlet
+  </button>
 
-<div class="ui middle aligned selection divided list">
-  <a *ngFor="let padlet of padlets" class="item pd-padlet-list-item"
-     [padlet]="padlet"
-     [routerLink]="padlet.id.toString()">
-  </a>
+  <div class="ui search">
+    <div class="ui icon input">
+      <input class="prompt" type="text" placeholder="Search padlet">
+      <i class="search icon"></i>
+    </div>
+    <div class="results"></div>
+  </div>
+
+  <h1>Hi, 'User' (TODO User first_name ausgeben)!</h1>
+  <p>Here are all your padlets:</p>
+
+  <div class="ui grid" style="margin-top: 2rem;">
+    <a *ngFor="let padlet of padlets" class="item pd-padlet-list-item"
+       [padlet]="padlet"
+       [routerLink]="padlet.id.toString()">
+    </a>
+  </div>
+
 </div>
