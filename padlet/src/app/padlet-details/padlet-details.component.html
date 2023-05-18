@@ -16,6 +16,15 @@
     <i class="add icon"></i>Create new Entry
   </button>
 
+  <!-- TODO Delete and Edit should only be visible if logged in user is owner of padlet -->
+  <button class="ui right floated button">
+    <i class="trash icon"></i>Delete Padlet
+  </button>
+
+  <button class="ui right floated button">
+    <i class="edit icon"></i>Edit Padlet
+  </button>
+
   <h1 class="ui header">{{ padlet.name }}</h1>
   <p>Here are your entries for this padlet:</p>
   <div class="ui grid" style="margin-top: 2rem;">
