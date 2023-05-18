@@ -8,15 +8,17 @@ export class PadletFactory {
       '',
       false,
       {id: 0, first_name: '', last_name: '', email: ''},
+      0,
     );
   }
 
-  static fromObject(rawBook: any): Padlet {
+  static fromObject(rawPadlet: any): Padlet {
     return new Padlet(
-      rawBook.id,
-      rawBook.name,
-      rawBook.is_public,
-      rawBook.user_id,
+      rawPadlet.id,
+      rawPadlet.name,
+      rawPadlet.is_public,
+      rawPadlet.user,
+      rawPadlet.user_id,
     );
   }
 }

@@ -1,0 +1,27 @@
+<div class="ui container">
+  <h1>Create new Entry</h1>
+  <form class="ui large form" [formGroup]="entryForm" (ngSubmit)="submitForm()">
+    <input type="hidden" formControlName="id">
+    <div class="field">
+      <label>Name</label>
+      <input formControlName="name">
+      <div *ngIf="errors['name']" class="ui negative message">{{ errors['name'] }}</div>
+    </div>
+
+    <div class="field">
+      <label>Content</label>
+      <input formControlName="content">
+      <div *ngIf="errors['content']" class="ui negative message">{{ errors['content'] }}</div>
+    </div>
+
+    <button type="submit" class="ui button" [disabled]="entryForm.invalid">
+      <i class="add icon"></i>Create
+    </button>
+  </form>
+
+  <div class="ui divider" style="margin-top: 2rem; margin-bottom: 1rem"></div>
+
+  <div [routerLink]="'/entries'" class="ui sticky bottom attached fluid icon button" style="bottom: 0;">
+    <i class="left chevron icon"></i>Discard changes and go back to your entries
+  </div>
+</div>

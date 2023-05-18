@@ -31,6 +31,11 @@ export class PadletApiService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 
+  createPadlet(padlet: Padlet) {
+    return this.http.post(`${this.api}/padlets`, padlet)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error: Error | any): Observable<any> {
     return throwError(error);
   }

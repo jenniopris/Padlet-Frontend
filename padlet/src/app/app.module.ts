@@ -10,7 +10,9 @@ import {PadletListItemComponent} from './padlet-list-item/padlet-list-item.compo
 import {EntryDetailsComponent} from './entry-details/entry-details.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { CommentsComponent } from './comments/comments.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { PadletFormComponent } from './padlet-form/padlet-form.component';
+import { EntryFormComponent } from './entry-form/entry-form.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,15 @@ import {FormsModule} from "@angular/forms";
     EntryDetailsComponent,
     RatingsComponent,
     CommentsComponent,
+    PadletFormComponent,
+    EntryFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

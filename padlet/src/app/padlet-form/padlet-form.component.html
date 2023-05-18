@@ -1,0 +1,36 @@
+<div class="ui container">
+  <h1>Create new Padlet</h1>
+  <form class="ui large form" [formGroup]="padletForm" (ngSubmit)="submitForm()">
+    <input type="hidden" formControlName="id">
+    <div class="field">
+      <label>Name</label>
+      <input formControlName="name">
+      <div *ngIf="errors['name']" class="ui negative message">{{ errors['name'] }}</div>
+    </div>
+
+    <div class="field">
+      <label>Visibility</label>
+      <div class="ui form">
+        <div class="grouped fields">
+          <label for="is_public">Select the visibility of this padlet</label>
+          <div class="field">
+            <div class="ui checkbox">
+              <input [formControlName]="'is_public'" checked="checked" id="is_public" name="is_public" type="checkbox">
+              <label>{{padletForm.get('is_public')?.value ? 'Public' : 'Private'}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="ui button" [disabled]="padletForm.invalid">
+      <i class="add icon"></i>Create
+    </button>
+  </form>
+
+  <div class="ui divider" style="margin-top: 2rem; margin-bottom: 1rem"></div>
+
+  <div [routerLink]="'/padlets'" class="ui sticky bottom attached fluid icon button" style="bottom: 0;">
+    <i class="left chevron icon"></i>Discard changes and go back to your padlets
+  </div>
+</div>
