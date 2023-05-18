@@ -1,42 +1,57 @@
-<div class="ui container" style="height: 80vh; display: flex; align-items: center; justify-content: center;">
-  <div class="ui middle aligned centered grid" style="text-align: left">
-    <div class="ui card">
-      <div class="content">
+<div class="ui grid">
+  <div class="twelve wide column">
+    <div class="ui container" style="height: 80vh; display: flex; align-items: center; justify-content: center;">
+      <div class="ui middle aligned centered grid" style="text-align: left">
+        <div class="ui card">
+          <div class="content">
 
-        <h2 class="ui header">
-          <div class="content">{{entry.name}}</div>
-        </h2>
+            <h2 class="ui header">
+              <div class="content">{{entry.name}}</div>
+            </h2>
 
-        <p>{{entry.content}}</p>
+            <p>{{entry.content}}</p>
 
-        <div class="ui horizontal list">
-          <div class="item">
-            <img class="ui mini circular image" src="/assets/molly.png">
-            <div class="content">
-              <div class="ui sub header">{{entry.user.first_name}} {{entry.user.last_name}}</div>
+            <div class="ui horizontal list">
+              <div class="item">
+                <img class="ui mini circular image" src="/assets/molly.png">
+                <div class="content">
+                  <div class="ui sub header">{{entry.user.first_name}} {{entry.user.last_name}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <pd-ratings></pd-ratings>
             </div>
           </div>
+
+          <div class="extra content">
+            <button [routerLink]="buttonRouterLink" class="ui right floated red basic button">
+              <i class="close icon"></i>Close
+            </button>
+
+            <!-- TODO Delete and edit button are only shown if user is owner of this entry-->
+            <button class="circular ui icon button">
+              <i class="trash icon"></i>
+            </button>
+
+            <button class="circular ui icon button">
+              <i class="pencil icon"></i>
+            </button>
+          </div>
         </div>
-
       </div>
-
-      <div class="extra content">
-        <button [routerLink]="buttonRouterLink" class="ui right floated red basic button">
-          <i class="close icon"></i>
-          Close
-        </button>
-
-        <button class="circular ui icon button">
-          <i class="trash icon"></i>
-        </button>
-
-        <button class="circular ui icon button">
-          <i class="pencil icon"></i>
-        </button>
-      </div>
-
     </div>
   </div>
+
+  <div class="four wide column">
+    <div class="ui vertical menu">
+      <div class="item">
+        <pd-comments></pd-comments>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- TODO Buttons for saving or discarding changes -->
