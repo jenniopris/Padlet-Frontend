@@ -1,0 +1,83 @@
+<!--div class="ui minimal comments">
+  <div class="comment" *ngFor="let comment of comments">
+    <div class="content">
+      <div class="author">{{ comment.user_id }}</div>
+      <div class="metadata">
+        <div class="date">{{ comment.created_at }}</div>
+      </div>
+      <div class="text">{{ comment.comment }}</div>
+    </div>
+  </div>
+
+  <form class="ui reply form" (ngSubmit)="submitComment()">
+    <div class="field">
+      <textarea rows="3" placeholder="Write a comment" [(ngModel)]="newComment.comment"></textarea>
+    </div>
+    <button class="ui primary button" type="submit">Send comment</button>
+  </form>
+</div-->
+
+<div class="ui minimal comments">
+  <h3 class="ui dividing header">Comments</h3>
+  <div class="comment">
+    <a class="avatar">
+      <img src="assets/molly.png">
+    </a>
+    <div class="content">
+      <a class="author">Elliot Fu</a>
+      <div class="metadata">
+        <span class="date">Yesterday at 12:30AM</span>
+      </div>
+      <div class="text">
+        <p>This is a placeholder comment.</p>
+      </div>
+      <div class="actions">
+        <a class="reply">Reply</a>
+      </div>
+    </div>
+    <div class="comments">
+      <div class="comment">
+        <a class="avatar">
+          <img src="assets/molly.png">
+        </a>
+        <div class="content">
+          <a class="author">Jenny Hess</a>
+          <div class="metadata">
+            <span class="date">Just now</span>
+          </div>
+          <div class="text">
+            This is a placeholder comment.
+          </div>
+          <div class="actions">
+            <a class="reply">Reply</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="comment">
+    <a class="avatar">
+      <img src="assets/molly.png">
+    </a>
+    <div class="content">
+      <a class="author">Joe Henderson</a>
+      <div class="metadata">
+        <span class="date">5 days ago</span>
+      </div>
+      <div class="text">
+        This is a placeholder comment.
+      </div>
+      <div class="actions">
+        <a class="reply">Reply</a>
+      </div>
+    </div>
+  </div>
+  <form class="ui reply form">
+    <div class="field">
+      <textarea></textarea>
+    </div>
+    <div class="ui submit icon button">
+      <i class="icon edit"></i> Add Reply
+    </div>
+  </form>
+</div>
