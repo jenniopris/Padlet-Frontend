@@ -1,0 +1,7 @@
+<div class="ui star rating" (click)="rateStar(starIndex + 1)" *ngFor="let starIndex of [0, 1, 2, 3, 4]">
+  <i class="icon" [ngClass]="{'active': starIndex < selectedRating}"></i>
+</div>
+
+<button class="mini ui right floated button" (click)="rateStar(0)">
+  <i class="trash icon"></i>Delete Rating
+</button>
