@@ -1,14 +1,14 @@
 <div class="ui container">
-  <button class="ui right floated button" routerLink="new">
+  <button *ngIf="authService.isLoggedIn()" class="ui right floated button" routerLink="new">
     <i class="add icon"></i>Create new Entry
   </button>
 
   <!-- TODO: delete and edit button only visible if user is owner of padlet or admin -->
-  <button *ngIf="authService.isLoggedIn" class="ui right floated button" (click)="deletePadlet()">
+  <button *ngIf="authService.isLoggedIn()" class="ui right floated button" (click)="deletePadlet()">
     <i class="trash icon"></i>Delete Padlet
   </button>
 
-  <button *ngIf="authService.isLoggedIn" class="ui right floated button" (click)="isEditMode = !isEditMode">
+  <button *ngIf="authService.isLoggedIn()" class="ui right floated button" (click)="isEditMode = !isEditMode">
     <i [ngClass]="isEditMode ? 'save' : 'edit'" class="icon"></i>{{isEditMode ? "Save Changes" : "Edit Padlet"}}
   </button>
 
