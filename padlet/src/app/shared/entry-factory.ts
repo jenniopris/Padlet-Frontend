@@ -13,6 +13,7 @@ export class EntryFactory {
         email: '',
       },
       0,
+      0,
     )
   }
 
@@ -24,6 +25,7 @@ export class EntryFactory {
       rawEntry.type,
       rawEntry.user,
       rawEntry.padlet_id,
+      rawEntry.user_id,
     );
   }
 }

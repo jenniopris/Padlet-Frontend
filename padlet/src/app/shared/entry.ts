@@ -6,6 +6,7 @@ export class Entry {
               public content: string,
               public type: string,
               public user: User,
-              public padlet_id: number) {
+              public padlet_id: number,
+              public user_id: number,) {
   }
 }

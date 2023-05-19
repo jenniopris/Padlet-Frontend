@@ -41,6 +41,11 @@ export class PadletApiService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  createEntry(entry: Entry) {
+    return this.http.post(`${this.api}/entries`, entry)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   deleteEntry(id: number) {
     return this.http.delete(`${this.api}/entries/${id}`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
