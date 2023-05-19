@@ -7,13 +7,13 @@ import {PadletFactory} from "../shared/padlet-factory";
 @Component({
   selector: 'pd-padlet-details',
   templateUrl: './padlet-details.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class PadletDetailsComponent implements OnInit {
 
   padlet: Padlet = PadletFactory.empty();
   entries: Entry[] = [];
+  isEditMode: boolean = false;
 
   constructor(
     private ps: PadletApiService,
@@ -21,9 +21,22 @@ export class PadletDetailsComponent implements OnInit {
     private router: Router,
   ) {
   }
+
   ngOnInit() {
     const params = this.route.snapshot.params;
     this.ps.getSingle(params['id']).subscribe(res => this.padlet = res);
-    this.ps.getEntriesById(params['id']).subscribe(res => this.entries = res);
+    this.loadEntries(params['id']);
+  }
+
+  loadEntries(padletId: string) {
+    this.ps.getEntriesById(padletId).subscribe(res => this.entries = res);
+  }
+
+  onDeleteClick(id: number) {
+    if (confirm('Delete ' + this.entries?.find(e => e.id === id)?.name  + '?' )) {
+      this.ps.deleteEntry(id).subscribe(() => {
+        this.loadEntries(this.padlet.id.toString());
+      });
+    }
   }
 }

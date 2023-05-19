@@ -21,8 +21,8 @@
     <i class="trash icon"></i>Delete Padlet
   </button>
 
-  <button class="ui right floated button">
-    <i class="edit icon"></i>Edit Padlet
+  <button class="ui right floated button" (click)="isEditMode = !isEditMode">
+    <i [ngClass]="isEditMode ? 'save' : 'edit'" class="icon"></i>{{isEditMode ? "Save Changes" : "Edit Padlet"}}
   </button>
 
   <h1 class="ui header">{{ padlet.name }}</h1>
@@ -30,7 +30,12 @@
   <div class="ui grid" style="margin-top: 2rem;">
     <a *ngFor="let entry of entries">
       <div class="ui card" style="margin-bottom: 1rem">
+
         <div class="content">
+
+          <button class="circular ui icon right floated button" *ngIf="isEditMode" (click)="onDeleteClick(entry.id)">
+            <i class="delete icon"></i>
+          </button>
 
           <h2 class="ui header">
             <div class="content">{{entry.name}}</div>
