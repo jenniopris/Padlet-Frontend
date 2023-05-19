@@ -5,6 +5,7 @@ import {PadletApiService} from "../shared/padlet-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CommentFormErrorMessages} from "./comment-form-error-messages";
 import {Comment} from "../shared/comment";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'pd-comments',
@@ -22,7 +23,8 @@ export class CommentsComponent implements OnInit {
     private fb: FormBuilder,
     private ps: PadletApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public toastr: ToastrService,
   ) {
     this.commentForm = this.fb.group({
       id: this.comment.id,
@@ -50,6 +52,8 @@ export class CommentsComponent implements OnInit {
       this.getComments();
     });
     this.commentForm.get('comment')?.reset();
+
+    this.toastr.success("Comment submitted");
   }
 
   updateErrorMessages() {

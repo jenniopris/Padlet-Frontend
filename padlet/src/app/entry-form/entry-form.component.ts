@@ -6,6 +6,7 @@ import {Entry} from "../shared/padlet";
 import {EntryFactory} from "../shared/entry-factory";
 import {EntryFormErrorMessages} from "./entry-form-error-messages";
 import {AuthenticationService} from "../shared/authentication.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'pd-entry-form',
@@ -25,6 +26,7 @@ export class EntryFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public authService: AuthenticationService,
+    public toastr: ToastrService,
   ) {
     this.entryForm = this.fb.group({
       id: this.entry.id,
@@ -47,6 +49,8 @@ export class EntryFormComponent implements OnInit {
     this.ps.createEntry(entry).subscribe(() => {
       this.router.navigate(['/padlets', this.padletId], {relativeTo: this.route});
     });
+
+    this.toastr.success("Entry created");
   }
 
   updateErrorMessages() {

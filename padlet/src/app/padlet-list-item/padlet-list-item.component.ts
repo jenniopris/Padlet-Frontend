@@ -4,6 +4,7 @@ import {Entry} from "../shared/entry";
 import {PadletFactory} from "../shared/padlet-factory";
 import {PadletListComponent} from "../padlet-list/padlet-list.component";
 import {PadletApiService} from "../shared/padlet-api.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'a.pd-padlet-list-item',
@@ -16,12 +17,14 @@ export class PadletListItemComponent {
 
   constructor(
     private padletApiService: PadletApiService,
-    public padletListComponent: PadletListComponent
+    public padletListComponent: PadletListComponent,
+    public toastr: ToastrService
   ) {
   }
 
   onDeleteClick() {
     if(confirm("Delete " + this.padlet.name + "?" + "\n" + "This will delete all entries in this padlet.")){
+      this.toastr.warning("Padlet deleted");
       this.padletApiService.deletePadlet(this.padlet.id).subscribe(() => {
         this.padletListComponent.loadPadlets();
       });

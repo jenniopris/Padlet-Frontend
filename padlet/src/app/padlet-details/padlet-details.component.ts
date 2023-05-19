@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Entry, Padlet} from "../shared/padlet";
 import {PadletFactory} from "../shared/padlet-factory";
 import {AuthenticationService} from "../shared/authentication.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'pd-padlet-details',
@@ -21,6 +22,7 @@ export class PadletDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public authService: AuthenticationService,
+    public toastr: ToastrService
   ) {
   }
 
@@ -36,6 +38,7 @@ export class PadletDetailsComponent implements OnInit {
 
   deletePadlet() {
     if (confirm('Are you sure you want to delete this padlet (' + this.padlet.name + ')?')) {
+      this.toastr.warning("Entry deleted");
       this.ps.deletePadlet(this.padlet.id).subscribe(res => {
         this.router.navigate(['../'], {relativeTo: this.route});
       });
@@ -44,6 +47,7 @@ export class PadletDetailsComponent implements OnInit {
 
   onDeleteClick(id: number) {
     if (confirm('Delete ' + this.entries?.find(e => e.id === id)?.name  + '?' )) {
+      this.toastr.warning("Entry deleted");
       this.ps.deleteEntry(id).subscribe(() => {
         this.loadEntries(this.padlet.id.toString());
       });

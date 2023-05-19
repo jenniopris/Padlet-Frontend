@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Entry} from "../shared/entry";
 import {EntryFactory} from "../shared/entry-factory";
 import {PadletApiService} from "../shared/padlet-api.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'pd-entry-details',
@@ -19,6 +20,7 @@ export class EntryDetailsComponent implements OnInit {
     private ps: PadletApiService,
     private route: ActivatedRoute,
     private router: Router,
+    public toastr: ToastrService
   ) {
   }
 
@@ -29,8 +31,8 @@ export class EntryDetailsComponent implements OnInit {
   }
 
   deleteEntry() {
-    console.log("delete entry worked");
     if (confirm('Are you sure you want to delete this entry (' + this.entry.name + ')?')) {
+      this.toastr.warning("Entry deleted");
       this.ps.deleteEntry(this.entry.id).subscribe(res => {
         this.router.navigate(['../'], {relativeTo: this.route});
       });

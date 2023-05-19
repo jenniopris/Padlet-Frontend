@@ -6,6 +6,7 @@ import {PadletApiService} from "../shared/padlet-api.service";
 import {PadletFormErrorMessages} from "./padlet-form-error-messages";
 import {Padlet} from "../shared/padlet";
 import {AuthenticationService} from "../shared/authentication.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'pd-padlet-form',
@@ -23,6 +24,7 @@ export class PadletFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public authService: AuthenticationService,
+    public toastr: ToastrService,
   ) {
     this.padletForm = this.fb.group({
       id: this.padlet.id,
@@ -46,6 +48,8 @@ export class PadletFormComponent implements OnInit {
     this.ps.createPadlet(padlet).subscribe(() => {
       this.router.navigate(['/padlets'], {relativeTo: this.route});
     });
+
+    this.toastr.success("Padlet created");
   }
 
   updateErrorMessages() {
