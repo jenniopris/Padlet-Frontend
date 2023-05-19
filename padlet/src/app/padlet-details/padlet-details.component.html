@@ -15,11 +15,17 @@
   <h1 class="ui header">{{ padlet.name }}</h1>
   <h3>Here are your entries for this padlet:</h3>
 
+  <p>TODO: Bei Edit Padlet soll Name von Padlet auch bearbeitet werden können<br>
+  Kann nur von Owner ausgeführt werden</p>
+
   <p>TODO: Sortierfunktion "nur eigene Entries anzeigen"<br>
   Soll nur angezeigt werden wenn User eingeloggt ist</p>
 
   <p>TODO: Button, um User einladen zu können<br>
   Soll nur angezeigt werden, wenn User eingeloggt ist</p>
+
+  <p>TODO: Button, um Teilnehmer zu verwalten<br>
+  Wird nur für Owner von Padlet angezeigt</p>
 
   <div class="ui grid" style="margin-top: 2rem;">
     <a *ngFor="let entry of entries">
