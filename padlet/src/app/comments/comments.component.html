@@ -14,6 +14,7 @@
       </div>
     </div>
   </div>
+  <!-- TODO: form is only shown if user is logged in -->
   <form class="ui reply form" [formGroup]="commentForm" (ngSubmit)="submitForm()">
     <div class="field">
       <textarea [formControlName]="'comment'"></textarea>

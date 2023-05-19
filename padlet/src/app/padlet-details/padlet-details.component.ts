@@ -32,6 +32,14 @@ export class PadletDetailsComponent implements OnInit {
     this.ps.getEntriesById(padletId).subscribe(res => this.entries = res);
   }
 
+  deletePadlet() {
+    if (confirm('Are you sure you want to delete this padlet (' + this.padlet.name + ')?')) {
+      this.ps.deletePadlet(this.padlet.id).subscribe(res => {
+        this.router.navigate(['../'], {relativeTo: this.route});
+      });
+    }
+  }
+
   onDeleteClick(id: number) {
     if (confirm('Delete ' + this.entries?.find(e => e.id === id)?.name  + '?' )) {
       this.ps.deleteEntry(id).subscribe(() => {
