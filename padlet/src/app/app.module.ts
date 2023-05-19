@@ -13,6 +13,9 @@ import { CommentsComponent } from './comments/comments.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PadletFormComponent } from './padlet-form/padlet-form.component';
 import { EntryFormComponent } from './entry-form/entry-form.component';
+import { LoginComponent } from './login/login.component';
+import {PadletApiService} from "./shared/padlet-api.service";
+import {AuthenticationService} from "./shared/authentication.service";
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { EntryFormComponent } from './entry-form/entry-form.component';
     CommentsComponent,
     PadletFormComponent,
     EntryFormComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,7 @@ import { EntryFormComponent } from './entry-form/entry-form.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [PadletApiService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
