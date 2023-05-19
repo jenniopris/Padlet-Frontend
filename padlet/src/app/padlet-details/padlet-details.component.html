@@ -1,27 +1,14 @@
-<!--div class="ui container">
-  <div class="ui middle aligned centered grid" style="text-align: left">
-    <div class="ui grid">
-      <div class="content">
-        <h2 class="ui header">
-          <div class="content"><h1>Padlet Detail View (Entries)</h1></div>
-        </h2>
-        <p>padlet-details works!</p>
-      </div>
-    </div>
-  </div>
-</div-->
-
 <div class="ui container">
   <button class="ui right floated button" routerLink="new">
     <i class="add icon"></i>Create new Entry
   </button>
 
-  <!-- TODO Delete and Edit should only be visible if logged in user is owner of padlet -->
-  <button class="ui right floated button" (click)="deletePadlet()">
+  <!-- TODO: delete and edit button only visible if user is owner of padlet or admin -->
+  <button *ngIf="authService.isLoggedIn" class="ui right floated button" (click)="deletePadlet()">
     <i class="trash icon"></i>Delete Padlet
   </button>
 
-  <button class="ui right floated button" (click)="isEditMode = !isEditMode">
+  <button *ngIf="authService.isLoggedIn" class="ui right floated button" (click)="isEditMode = !isEditMode">
     <i [ngClass]="isEditMode ? 'save' : 'edit'" class="icon"></i>{{isEditMode ? "Save Changes" : "Edit Padlet"}}
   </button>
 

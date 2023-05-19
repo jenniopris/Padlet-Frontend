@@ -3,6 +3,7 @@ import {PadletApiService} from "../shared/padlet-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Entry, Padlet} from "../shared/padlet";
 import {PadletFactory} from "../shared/padlet-factory";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'pd-padlet-details',
@@ -19,6 +20,7 @@ export class PadletDetailsComponent implements OnInit {
     private ps: PadletApiService,
     private route: ActivatedRoute,
     private router: Router,
+    public authService: AuthenticationService,
   ) {
   }
 
