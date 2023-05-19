@@ -7,7 +7,13 @@ export class PadletFactory {
       0,
       '',
       false,
-      {id: 0, first_name: '', last_name: '', email: ''},
+      {
+        id: 0,
+        first_name: '',
+        last_name: '',
+        email: '',
+        role: '',
+      },
       0,
     );
   }

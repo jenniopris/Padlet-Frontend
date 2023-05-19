@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Entry, Padlet} from "./padlet";
+import {Entry, Padlet, User} from "./padlet";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {Comment} from "./comment";
 
@@ -13,6 +13,11 @@ export class PadletApiService {
 
   getAllPadlets() {
     return this.http.get<Array<Padlet>>(`${this.api}/padlets`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  getAllUsers() {
+    return this.http.get<Array<User>>(`${this.api}/users`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 

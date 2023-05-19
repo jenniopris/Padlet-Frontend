@@ -1,0 +1,32 @@
+<div class="ui container">
+
+  <h1 class="ui header">Admin panel</h1>
+
+  <p>TODO: Ausgabe von allen Usern inkl. Rechte</p>
+
+  <h2>List of all users</h2>
+  <div class="ui grid" style="margin-top: 2rem;">
+    <div *ngFor="let user of users">
+      <div class="ui card">
+
+        <div class="content">
+          <h3 class="ui header">
+            <img class="ui mini circular image" src="/assets/molly.png">
+            <div class="content">{{ user.first_name }} {{ user.last_name }}</div>
+          </h3>
+          <p>Email: {{ user.email }}</p>
+          <p>Role: {{ user.role }}</p>
+        </div>
+        <div class="extra content">
+          <button class="circular ui icon button">
+            <i class="edit icon"></i>
+          </button>
+          <button class="circular ui icon button">
+            <i class="trash icon"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

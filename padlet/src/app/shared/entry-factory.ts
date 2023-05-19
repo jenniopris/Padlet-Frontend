@@ -11,6 +11,7 @@ export class EntryFactory {
         last_name: '',
         first_name: '',
         email: '',
+        role: '',
       },
       0,
       0,
