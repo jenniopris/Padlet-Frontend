@@ -5,3 +5,7 @@
 <button class="mini ui right floated button" (click)="rateStar(0)">
   <i class="trash icon"></i>Delete Rating
 </button>
+
+<div *ngFor="let rating of ratings" class="rating">
+  <p>Rating: {{rating.rating}}</p>
+</div>

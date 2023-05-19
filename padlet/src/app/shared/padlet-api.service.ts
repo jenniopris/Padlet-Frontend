@@ -61,6 +61,11 @@ export class PadletApiService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  getRatingByEntryIdAndUserId(entryId: any, userId: any) {
+    return this.http.get<Array<Comment>>(`${this.api}/ratings/entry/${entryId}/${userId}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error: Error | any): Observable<any> {
     return throwError(error);
   }
