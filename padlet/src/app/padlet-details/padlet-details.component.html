@@ -13,7 +13,14 @@
   </button>
 
   <h1 class="ui header">{{ padlet.name }}</h1>
-  <p>Here are your entries for this padlet:</p>
+  <h3>Here are your entries for this padlet:</h3>
+
+  <p>TODO: Sortierfunktion "nur eigene Entries anzeigen"<br>
+  Soll nur angezeigt werden wenn User eingeloggt ist</p>
+
+  <p>TODO: Button, um User einladen zu können<br>
+  Soll nur angezeigt werden, wenn User eingeloggt ist</p>
+
   <div class="ui grid" style="margin-top: 2rem;">
     <a *ngFor="let entry of entries">
       <div class="ui card" style="margin-bottom: 1rem">

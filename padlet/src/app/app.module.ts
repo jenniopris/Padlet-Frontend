@@ -19,6 +19,7 @@ import {TokenInterceptorService} from "./shared/token-interceptor.service";
 import {JwtInterceptorService} from "./shared/jwt-interceptor.service";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     PadletFormComponent,
     EntryFormComponent,
     LoginComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

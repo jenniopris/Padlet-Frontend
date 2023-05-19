@@ -17,7 +17,10 @@
   </ng-template>
 
 
-  <p>Here are all your padlets:</p>
+  <h3>Here are all your padlets:</h3>
+
+  <p>TODO: Sortierfunktion nach eigenen, öffentlichen und gemischten Padlets.<br>
+  Sortierfunktion wird nur angezeigt wenn User eingeloggt ist (ansonsten werden nur öffentliche angezeigt)</p>
 
   <div class="ui grid" style="margin-top: 2rem;">
     <a *ngFor="let padlet of padlets" class="item pd-padlet-list-item"
