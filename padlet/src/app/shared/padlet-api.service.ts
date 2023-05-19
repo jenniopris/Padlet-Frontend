@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Entry, Padlet} from "./padlet";
 import {catchError, Observable, retry, throwError} from "rxjs";
+import {Comment} from "./comment";
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +52,17 @@ export class PadletApiService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  createComment(comment: Comment) {
+    return this.http.post(`${this.api}/comments`, comment)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+  getCommentsByEntryId(entryId: any) {
+   return this.http.get<Array<Comment>>(`${this.api}/comments/entry/${entryId}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error: Error | any): Observable<any> {
     return throwError(error);
   }
+
 }
