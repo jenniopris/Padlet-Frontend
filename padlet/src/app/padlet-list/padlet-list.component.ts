@@ -36,5 +36,4 @@ export class PadletListComponent implements OnInit {
   loadPadlets() {
     this.padletApiService.getAllPadlets().subscribe(res => this.padlets = res);
   }
-
 }

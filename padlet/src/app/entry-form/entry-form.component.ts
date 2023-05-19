@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Entry} from "../shared/padlet";
 import {EntryFactory} from "../shared/entry-factory";
 import {EntryFormErrorMessages} from "./entry-form-error-messages";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'pd-entry-form',
@@ -22,7 +23,8 @@ export class EntryFormComponent implements OnInit {
     private fb: FormBuilder,
     private ps: PadletApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthenticationService,
   ) {
     this.entryForm = this.fb.group({
       id: this.entry.id,
@@ -40,7 +42,7 @@ export class EntryFormComponent implements OnInit {
     const entry: Entry = EntryFactory.fromObject(this.entryForm.value);
     entry.padlet_id = this.padletId;
     entry.type = 'text';
-    entry.user_id = 1; // TODO: change to currently logged in user
+    entry.user_id = this.authService.getCurrentUserId();
 
     this.ps.createEntry(entry).subscribe(() => {
       this.router.navigate(['/padlets', this.padletId], {relativeTo: this.route});
@@ -48,7 +50,6 @@ export class EntryFormComponent implements OnInit {
   }
 
   updateErrorMessages() {
-    console.log("Is form invalid? " + this.entryForm.invalid);
     this.errors = {};
     for (const message of EntryFormErrorMessages) {
       const control = this.entryForm.get(message.forControl);

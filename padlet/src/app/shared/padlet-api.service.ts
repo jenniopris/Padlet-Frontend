@@ -4,9 +4,7 @@ import {Entry, Padlet} from "./padlet";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {Comment} from "./comment";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PadletApiService {
   private api = 'http://padlet.s2010456021.student.kwmhgb.at/api';
 
@@ -14,7 +12,8 @@ export class PadletApiService {
   }
 
   getAllPadlets() {
-    return this.http.get<Array<Padlet>>(`${this.api}/padlets`).pipe(retry(3)).pipe(catchError(this.errorHandler));
+    return this.http.get<Array<Padlet>>(`${this.api}/padlets`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
   getSingle(id: string): Observable<Padlet> {
