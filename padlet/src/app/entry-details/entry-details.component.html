@@ -20,7 +20,7 @@
               </div>
             </div>
 
-            <div>
+            <div *ngIf="authService.isLoggedIn()">
               <pd-ratings></pd-ratings>
             </div>
           </div>
@@ -31,13 +31,15 @@
             </button>
 
             <!-- TODO Delete and edit button are only shown if user is owner of this entry-->
-            <button class="circular ui icon button" (click)="deleteEntry()">
-              <i class="trash icon"></i>
-            </button>
+            <div *ngIf="authService.isLoggedIn()">
+              <button class="circular ui icon button" (click)="deleteEntry()">
+                <i class="trash icon"></i>
+              </button>
 
-            <button class="circular ui icon button">
-              <i class="pencil icon"></i>
-            </button>
+              <button class="circular ui icon button">
+                <i class="pencil icon"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>

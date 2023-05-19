@@ -4,6 +4,7 @@ import {Entry} from "../shared/entry";
 import {EntryFactory} from "../shared/entry-factory";
 import {PadletApiService} from "../shared/padlet-api.service";
 import {ToastrService} from "ngx-toastr";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'pd-entry-details',
@@ -20,7 +21,8 @@ export class EntryDetailsComponent implements OnInit {
     private ps: PadletApiService,
     private route: ActivatedRoute,
     private router: Router,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    public authService: AuthenticationService,
   ) {
   }
 
