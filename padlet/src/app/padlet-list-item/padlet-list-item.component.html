@@ -1,6 +1,10 @@
 <div class="ui card" style="margin-bottom: 1rem">
   <div class="content">
 
+    <button class="circular ui icon right floated button" *ngIf="padletListComponent.isEditMode" (click)="onDeleteClick()">
+      <i class="delete icon"></i>
+    </button>
+
     <h2 class="ui header">
       <div class="content">{{padlet.name}}</div>
     </h2>
@@ -16,11 +20,11 @@
 
   </div>
 
-  <!--button [routerLink]="padlet.id.toString()" class="ui animated button" tabindex="0">
+  <button [routerLink]="padlet.id.toString()" class="ui animated button" tabindex="0">
     <div class="visible content">Open</div>
     <div class="hidden content">
       <i class="right arrow icon"></i>
     </div>
-  </button-->
+  </button>
 
 </div>

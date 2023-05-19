@@ -26,13 +26,18 @@ export class PadletApiService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 
-  getEntryById(id: string): Observable<Entry>{
+  getEntryById(id: string): Observable<Entry> {
     return this.http.get<Entry>(`${this.api}/entries/${id}`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 
   createPadlet(padlet: Padlet) {
     return this.http.post(`${this.api}/padlets`, padlet)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  deletePadlet(id: number) {
+    return this.http.delete(`${this.api}/padlets/${id}`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 

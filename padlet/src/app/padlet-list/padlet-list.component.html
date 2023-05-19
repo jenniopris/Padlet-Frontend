@@ -5,8 +5,8 @@
 
   <!-- TODO should only be visible if logged in -->
   <!-- here users can delete their own padlets -->
-  <button class="ui right floated button">
-    <i class="edit icon"></i>Edit Padlets
+  <button class="ui right floated button" (click)="isEditMode = !isEditMode">
+    <i [ngClass]="isEditMode ? 'save' : 'edit'" class="icon"></i>{{isEditMode ? "Save Changes" : "Edit Padlets"}}
   </button>
 
   <h1>Welcome to Padlets! (if not logged in)</h1>
@@ -16,8 +16,8 @@
 
   <div class="ui grid" style="margin-top: 2rem;">
     <a *ngFor="let padlet of padlets" class="item pd-padlet-list-item"
-       [padlet]="padlet"
-       [routerLink]="padlet.id.toString()">
+       [padlet]="padlet">
+       <!--[routerLink]="padlet.id.toString()"-->
     </a>
   </div>
 

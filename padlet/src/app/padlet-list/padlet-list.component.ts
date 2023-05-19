@@ -6,16 +6,22 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'pd-padlet-list',
   templateUrl: './padlet-list.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class PadletListComponent implements OnInit {
-  padlets: Padlet[] = [];
 
-  constructor(private padletApiService: PadletApiService) { }
-  ngOnInit() {
-    this.padletApiService.getAllPadlets().subscribe(res => this.padlets = res);
+  padlets: Padlet[] = [];
+  protected readonly alert = alert;
+  isEditMode: boolean = false;
+
+  constructor(private padletApiService: PadletApiService) {
   }
 
-  protected readonly alert = alert;
+  ngOnInit() {
+    this.loadPadlets();
+  }
+
+  loadPadlets() {
+    this.padletApiService.getAllPadlets().subscribe(res => this.padlets = res);
+  }
 }
