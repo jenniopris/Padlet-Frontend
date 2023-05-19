@@ -5,13 +5,18 @@
 
   <!-- TODO should only be visible if logged in -->
   <!-- here users can delete their own padlets -->
-  <button class="ui right floated button" (click)="isEditMode = !isEditMode">
+  <button *ngIf="authService.isLoggedIn()" class="ui right floated button" (click)="isEditMode = !isEditMode">
     <i [ngClass]="isEditMode ? 'save' : 'edit'" class="icon"></i>{{isEditMode ? "Save Changes" : "Edit Padlets"}}
   </button>
 
-  <h1>Welcome to Padlets! (if not logged in)</h1>
   <!-- TODO User first_name and last_name -->
-  <h1>Hi, 'first_name last_name'! (if logged in)</h1>
+  <h1 *ngIf="authService.isLoggedIn(); else notLoggedIn">Welcome back, {{userName}}!</h1>
+
+  <ng-template #notLoggedIn>
+    <h1>Welcome to Padlets! Please log in to use all our functions.</h1>
+  </ng-template>
+
+
   <p>Here are all your padlets:</p>
 
   <div class="ui grid" style="margin-top: 2rem;">
