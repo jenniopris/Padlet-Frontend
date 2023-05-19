@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CommentFormErrorMessages} from "./comment-form-error-messages";
 import {Comment} from "../shared/comment";
 import {ToastrService} from "ngx-toastr";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'pd-comments',
@@ -24,6 +25,7 @@ export class CommentsComponent implements OnInit {
     private ps: PadletApiService,
     private route: ActivatedRoute,
     private router: Router,
+    public authService: AuthenticationService,
     public toastr: ToastrService,
   ) {
     this.commentForm = this.fb.group({
@@ -46,7 +48,7 @@ export class CommentsComponent implements OnInit {
   submitForm() {
     const comment: Comment = CommentFactory.fromObject(this.commentForm.value);
     comment.entry_id = this.entryId;
-    comment.user_id = 1; // TODO: change to currently logged in user
+    comment.user_id = this.authService.getCurrentUserId();
 
     this.ps.createComment(comment).subscribe(() => {
       this.getComments();
