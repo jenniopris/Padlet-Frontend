@@ -40,7 +40,27 @@ export class RatingsComponent implements OnInit{
 
   rateStar(rating: number) {
     this.selectedRating = rating;
-    console.log('Rating: ' + rating);
+    this.submitRating();
+  }
+
+  submitRating() {
+    const rating: Rating = RatingFactory.fromObject(this.ratingForm.value);
+    rating.entry_id = this.entryId;
+    rating.user_id = this.userId;
+    rating.rating = this.selectedRating;
+
+    console.log(rating);
+
+    if(this.rating){
+      rating.id = this.rating.id;
+      this.ps.updateRating(rating).subscribe(() => {
+        this.getRating();
+      });
+    } else {
+      this.ps.saveRating(rating).subscribe(() => {
+        this.getRating();
+      });
+    }
   }
 
   getRating() {
@@ -48,5 +68,14 @@ export class RatingsComponent implements OnInit{
       this.rating = res;
       this.selectedRating = res.rating;
     });
+  }
+
+  deleteRating() {
+    if(this.rating){
+      this.ps.deleteRating(this.rating.id).subscribe(() => {
+        this.rating = RatingFactory.empty();
+        this.selectedRating = 0;
+      });
+    }
   }
 }

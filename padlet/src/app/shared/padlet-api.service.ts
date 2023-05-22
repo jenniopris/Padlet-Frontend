@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Entry, Padlet, User} from "./padlet";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {Comment} from "./comment";
+import {Rating} from "./rating";
 
 @Injectable()
 export class PadletApiService {
@@ -65,8 +66,9 @@ export class PadletApiService {
     return this.http.post(`${this.api}/comments`, comment)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
+
   getCommentsByEntryId(entryId: any) {
-   return this.http.get<Array<Comment>>(`${this.api}/comments/entry/${entryId}`)
+    return this.http.get<Array<Comment>>(`${this.api}/comments/entry/${entryId}`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
@@ -74,6 +76,22 @@ export class PadletApiService {
     return this.http.get<Array<Comment>>(`${this.api}/ratings/entry/${entryId}/${userId}`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
+
+  saveRating(rating: Rating) {
+    return this.http.post(`${this.api}/ratings`, rating)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  updateRating(rating: Rating) {
+    return this.http.put(`${this.api}/ratings/${rating.id}`, rating)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  deleteRating(id: number) {
+    return this.http.delete(`${this.api}/ratings/${id}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   getUserById(currentUserId: number) {
     return this.http.get(`${this.api}/users/${currentUserId}`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
@@ -82,5 +100,4 @@ export class PadletApiService {
   private errorHandler(error: Error | any): Observable<any> {
     return throwError(error);
   }
-
 }
