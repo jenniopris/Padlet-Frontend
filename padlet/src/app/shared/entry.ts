@@ -7,6 +7,8 @@ export class Entry {
               public type: string,
               public user: User,
               public padlet_id: number,
-              public user_id: number,) {
+              public user_id: number,
+              public created_at: Date,
+              ) {
   }
 }

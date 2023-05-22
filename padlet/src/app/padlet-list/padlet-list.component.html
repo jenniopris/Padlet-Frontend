@@ -10,14 +10,16 @@
   </button>
 
   <!-- TODO User first_name and last_name -->
-  <h1 *ngIf="authService.isLoggedIn(); else notLoggedIn">Welcome back, {{userName}}!</h1>
+  <div *ngIf="authService.isLoggedIn(); else notLoggedIn">
+    <h1>Welcome back, {{userName}}!</h1>
+    <h3>Here are all your padlets:</h3>
+  </div>
 
   <ng-template #notLoggedIn>
-    <h1>Welcome to Padlets! Please log in to use all our functions.</h1>
+    <h1>Welcome to Padlets!</h1>
+    <h3>Please log in to use all our functions.</h3>
   </ng-template>
 
-
-  <h3>Here are all your padlets:</h3>
 
   <p>TODO: Sortierfunktion nach eigenen, öffentlichen und gemischten Padlets.<br>
   Sortierfunktion wird nur angezeigt wenn User eingeloggt ist (ansonsten werden nur öffentliche angezeigt)</p>

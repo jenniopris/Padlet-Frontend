@@ -15,6 +15,7 @@ export class EntryFactory {
       },
       0,
       0,
+      new Date(),
     )
   }
 
@@ -27,6 +28,7 @@ export class EntryFactory {
       rawEntry.user,
       rawEntry.padlet_id,
       rawEntry.user_id,
+      rawEntry.created_at,
     );
   }
 }

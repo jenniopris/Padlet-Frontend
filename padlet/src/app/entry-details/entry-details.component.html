@@ -11,6 +11,10 @@
 
             <p>{{entry.content}}</p>
 
+            <div class="metadata">
+              <span class="date">{{entry.created_at | date:'dd/MM/yy, HH:mm'}}</span>
+            </div>
+
             <div class="ui horizontal list">
               <div class="item">
                 <img class="ui mini circular image" src="/assets/molly.png">

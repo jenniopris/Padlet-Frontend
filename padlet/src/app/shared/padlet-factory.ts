@@ -15,6 +15,7 @@ export class PadletFactory {
         role: '',
       },
       0,
+      new Date()
     );
   }
 
@@ -25,6 +26,7 @@ export class PadletFactory {
       rawPadlet.is_public,
       rawPadlet.user,
       rawPadlet.user_id,
+      rawPadlet.created_at,
     );
   }
 }
