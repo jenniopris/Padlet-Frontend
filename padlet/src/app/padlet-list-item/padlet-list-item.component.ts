@@ -4,6 +4,7 @@ import {PadletFactory} from "../shared/padlet-factory";
 import {PadletListComponent} from "../padlet-list/padlet-list.component";
 import {PadletApiService} from "../shared/padlet-api.service";
 import {ToastrService} from "ngx-toastr";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'a.pd-padlet-list-item',
@@ -16,6 +17,7 @@ export class PadletListItemComponent {
 
   constructor(
     private padletApiService: PadletApiService,
+    public authService: AuthenticationService,
     public padletListComponent: PadletListComponent,
     public toastr: ToastrService
   ) {
