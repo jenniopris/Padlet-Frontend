@@ -16,6 +16,11 @@ export class PadletApiService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  updatePadlet(padlet: Padlet) {
+    return this.http.put(`${this.api}/padlets/${padlet.id}`, padlet)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   getAllUsers() {
     return this.http.get<Array<User>>(`${this.api}/users`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));

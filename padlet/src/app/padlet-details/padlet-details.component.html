@@ -8,24 +8,27 @@
     <i class="trash icon"></i>Delete Padlet
   </button>
 
-  <button *ngIf="authService.isLoggedIn()" class="ui right floated button" (click)="isEditMode = !isEditMode">
-    <i [ngClass]="isEditMode ? 'save' : 'edit'" class="icon"></i>{{isEditMode ? "Save Changes" : "Edit Padlet"}}
+  <button *ngIf="authService.isLoggedIn()" class="ui right floated button" (click)="onEditClick()">
+    <i [ngClass]="isEditMode ? 'cancel' : 'edit'" class="icon"></i>{{isEditMode ? "Stop editing" : "Edit Padlet"}}
   </button>
 
-  <h1 class="ui header">{{ padlet.name }}</h1>
-  <h3>Here are your entries for this padlet:</h3>
+  <h1 class="ui header">{{ isEditMode ? "Update Padlet: " + padlet.name : padlet.name }}</h1>
 
-  <p>TODO: Bei Edit Padlet soll Name von Padlet auch bearbeitet werden können<br>
-  Kann nur von Owner ausgeführt werden</p>
+  <div #form></div>
+  <div *ngIf="!isEditMode">
+    <h3>Here are your entries for this padlet:</h3>
 
-  <p>TODO: Sortierfunktion "nur eigene Entries anzeigen"<br>
-  Soll nur angezeigt werden wenn User eingeloggt ist</p>
+    <p>TODO: Bei Edit Padlet kann nur von Owner ausgeführt werden</p>
 
-  <p>TODO: Button, um User einladen zu können<br>
-  Soll nur angezeigt werden, wenn User eingeloggt ist</p>
+    <p>TODO: Sortierfunktion "nur eigene Entries anzeigen"<br>
+    Soll nur angezeigt werden wenn User eingeloggt ist</p>
 
-  <p>TODO: Button, um Teilnehmer zu verwalten<br>
-  Wird nur für Owner von Padlet angezeigt</p>
+    <p>TODO: Button, um User einladen zu können<br>
+    Soll nur angezeigt werden, wenn User eingeloggt ist</p>
+
+    <p>TODO: Button, um Teilnehmer zu verwalten<br>
+    Wird nur für Owner von Padlet angezeigt</p>
+  </div>
 
   <div class="ui grid" style="margin-top: 2rem;">
     <a *ngFor="let entry of entries">

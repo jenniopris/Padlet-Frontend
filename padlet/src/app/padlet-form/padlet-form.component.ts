@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {PadletFactory} from "../shared/padlet-factory";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -16,7 +16,11 @@ import {ToastrService} from "ngx-toastr";
 export class PadletFormComponent implements OnInit {
   padletForm: FormGroup;
   padlet = PadletFactory.empty();
+  isUpdatingPadlet = false;
   errors: { [key: string]: string } = {};
+
+  @Output()
+  closeForm: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
     private fb: FormBuilder,
@@ -26,14 +30,22 @@ export class PadletFormComponent implements OnInit {
     public authService: AuthenticationService,
     public toastr: ToastrService,
   ) {
+    this.padletForm = this.fb.group({});
+  }
+
+  ngOnInit() {
+    if (this.padlet) {
+      this.isUpdatingPadlet = true;
+    }
+    this.initForm();
+  }
+
+  initForm() {
     this.padletForm = this.fb.group({
       id: this.padlet.id,
       name: [this.padlet.name ?? '', Validators.required],
       is_public: [this.padlet.is_public ?? true],
     });
-  }
-
-  ngOnInit() {
     this.padletForm.valueChanges.subscribe(() => this.updateErrorMessages());
   }
 
@@ -45,11 +57,28 @@ export class PadletFormComponent implements OnInit {
       padlet.user_id = 1;
     }
 
+    if (this.isUpdatingPadlet) {
+      this.ps.updatePadlet(padlet).subscribe(res => {
+        this.closeForm.emit();
+      });
+    } else {
+      padlet.user_id = 1; // just for testing
+      console.log(padlet);
+      this.ps.createPadlet(padlet).subscribe(res => {
+        this.padlet = PadletFactory.empty();
+        this.padletForm.reset(PadletFactory.empty());
+        this.router.navigate(["/padlets"], {
+          relativeTo: this.route});
+      });
+    }
+
+    /*
     this.ps.createPadlet(padlet).subscribe(() => {
       this.router.navigate(['/padlets'], {relativeTo: this.route});
     });
 
     this.toastr.success("Padlet created");
+     */
   }
 
   updateErrorMessages() {

@@ -1,5 +1,5 @@
 <div class="ui container">
-  <h1>Create new Padlet</h1>
+  <h1 *ngIf="!isUpdatingPadlet">Create new Padlet</h1>
   <form class="ui large form" [formGroup]="padletForm" (ngSubmit)="submitForm()">
     <input type="hidden" formControlName="id">
     <div class="field">
@@ -14,9 +14,9 @@
         <div class="grouped fields">
           <label for="is_public">Select the visibility of this padlet</label>
           <div class="field">
-            <div class="ui checkbox">
+            <div class="ui toggle checkbox">
               <input [formControlName]="'is_public'" checked="checked" id="is_public" name="is_public" type="checkbox">
-              <label>{{padletForm.get('is_public')?.value ? 'Your padlet is now public' : 'Your padlet is now private'}}</label>
+              <label>Make public ({{padletForm.get('is_public')?.value ? 'Your padlet is now public' : 'Your padlet is now private'}})</label>
             </div>
           </div>
         </div>
@@ -24,13 +24,14 @@
     </div>
 
     <button type="submit" class="ui button" [disabled]="padletForm.invalid">
-      <i class="add icon"></i>Create
+      <i class="add icon"></i>
+      {{isUpdatingPadlet ? "Update" : "Create"}}
     </button>
   </form>
 
-  <div class="ui divider" style="margin-top: 2rem; margin-bottom: 1rem"></div>
+  <div *ngIf="!isUpdatingPadlet" class="ui divider" style="margin-top: 2rem; margin-bottom: 1rem"></div>
 
-  <div [routerLink]="'/padlets'" class="ui sticky bottom attached fluid icon button" style="bottom: 0;">
+  <div *ngIf="!isUpdatingPadlet" [routerLink]="'/padlets'" class="ui sticky bottom attached fluid icon button" style="bottom: 0;">
     <i class="left chevron icon"></i>Discard changes and go back to your padlets
   </div>
 </div>
