@@ -35,6 +35,13 @@
     Wird nur für Owner von Padlet angezeigt</p>
   </div>
 
+  <div *ngIf="entries.length == 0" class="ui placeholder segment">
+    <div class="ui icon header">
+      There are no entries in this padlet
+    </div>
+    <button *ngIf="authService.isLoggedIn()" class="ui primary button" routerLink="new">Create first Entry</button>
+  </div>
+
   <div class="ui grid" style="margin-top: 2rem;">
     <a *ngFor="let entry of entries">
       <div class="ui card" style="margin-bottom: 1rem">
