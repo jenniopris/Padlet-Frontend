@@ -11,7 +11,7 @@
     <div class="field">
       <label>Visibility</label>
       <div class="ui form">
-        <div class="grouped fields">
+        <div *ngIf="authService.isLoggedIn(); else publicPadlet" class="grouped fields">
           <label for="is_public">Select the visibility of this padlet</label>
           <div class="field">
             <div class="ui toggle checkbox">
@@ -20,6 +20,9 @@
             </div>
           </div>
         </div>
+        <ng-template #publicPadlet>
+          <p>This padlet will be public.</p>
+        </ng-template>
       </div>
     </div>
 

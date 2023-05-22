@@ -8,6 +8,7 @@ import {EntryFormComponent} from "./entry-form/entry-form.component";
 import {LoginComponent} from "./login/login.component";
 import {AdminComponent} from "./admin/admin.component";
 import {SharingFormComponent} from "./sharing-form/sharing-form.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'padlets', pathMatch: 'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'padlets/:id', component: PadletDetailsComponent, pathMatch: 'full'},
   {path: 'padlets/:padletId/:entryId', component: EntryDetailsComponent, pathMatch: 'full'},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
+  {path: 'profile', component: ProfileComponent, pathMatch: 'full'},
   {path: 'admin', component: AdminComponent, pathMatch: 'full'},
   {path: '**', redirectTo: 'padlets'}, // könnte auch eine 404 Seite sein
 ];

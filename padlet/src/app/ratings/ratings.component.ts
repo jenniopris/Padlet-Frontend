@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PadletApiService} from "../shared/padlet-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RatingFactory} from "../shared/rating-factory";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'pd-ratings',
@@ -22,20 +23,26 @@ export class RatingsComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private ps: PadletApiService,
+    private authService: AuthenticationService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.ratingForm = this.fb.group({
-      id: this.rating.id,
-      rating: [this.rating.rating ?? '', Validators.required],
-      user_id: [this.rating.user_id ?? 1],
-      entry_id: [this.rating.entry_id ?? 1],
-    });
+    this.ratingForm = this.fb.group({});
   }
 
   ngOnInit() {
+    this.userId = this.authService.getCurrentUserId();
     this.entryId = this.route.snapshot.params['entryId'];
     this.getRating();
+  }
+
+  initForm() {
+    this.ratingForm = this.fb.group({
+      id: this.rating.id,
+      rating: [this.rating.rating ?? 0, Validators.required],
+      user_id: this.userId,
+      entry_id: this.entryId,
+    });
   }
 
   rateStar(rating: number) {
@@ -67,6 +74,7 @@ export class RatingsComponent implements OnInit{
     this.ps.getRatingByEntryIdAndUserId(this.entryId, this.userId).subscribe(res => {
       this.rating = res;
       this.selectedRating = res.rating;
+      this.initForm();
     });
   }
 

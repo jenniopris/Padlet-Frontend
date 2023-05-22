@@ -52,14 +52,17 @@ export class PadletFormComponent implements OnInit {
       padlet.user_id = this.authService.getCurrentUserId();
     } else {
       padlet.user_id = 1;
+      padlet.is_public = true;
     }
 
     if (this.isUpdatingPadlet) {
       this.ps.updatePadlet(padlet).subscribe(res => {
         this.closeForm.emit();
+        this.toastr.success("Padlet successfully updated!");
       });
     } else {
       this.ps.createPadlet(padlet).subscribe(res => {
+        this.toastr.success("Padlet created");
         this.padlet = PadletFactory.empty();
         this.padletForm.reset(PadletFactory.empty());
         this.router.navigate(["/padlets"], {
@@ -77,7 +80,7 @@ export class PadletFormComponent implements OnInit {
   }
 
   updateErrorMessages() {
-    console.log("Is form invalid? " + this.padletForm.invalid);
+    //console.log("Is form invalid? " + this.padletForm.invalid);
     this.errors = {};
     for (const message of PadletFormErrorMessages) {
       const control = this.padletForm.get(message.forControl);
