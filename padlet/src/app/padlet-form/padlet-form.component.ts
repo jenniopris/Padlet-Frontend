@@ -34,9 +34,6 @@ export class PadletFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.padlet) {
-      this.isUpdatingPadlet = true;
-    }
     this.initForm();
   }
 
@@ -62,8 +59,6 @@ export class PadletFormComponent implements OnInit {
         this.closeForm.emit();
       });
     } else {
-      padlet.user_id = 1; // just for testing
-      console.log(padlet);
       this.ps.createPadlet(padlet).subscribe(res => {
         this.padlet = PadletFactory.empty();
         this.padletForm.reset(PadletFactory.empty());

@@ -40,15 +40,22 @@ export class PadletDetailsComponent implements OnInit {
     this.ps.getEntriesById(padletId).subscribe(res => this.entries = res);
   }
 
+  /**
+   * Delete a padlet
+   */
   deletePadlet() {
     if (confirm('Are you sure you want to delete this padlet (' + this.padlet.name + ')?')) {
-      this.toastr.warning("Entry deleted");
+      this.toastr.warning("Padlet deleted");
       this.ps.deletePadlet(this.padlet.id).subscribe(res => {
         this.router.navigate(['../'], {relativeTo: this.route});
       });
     }
   }
 
+  /**
+   * Delete an entry
+   * @param id
+   */
   onDeleteClick(id: number) {
     if (confirm('Delete ' + this.entries?.find(e => e.id === id)?.name  + '?' )) {
       this.toastr.warning("Entry deleted");
@@ -63,6 +70,7 @@ export class PadletDetailsComponent implements OnInit {
     if(this.isEditMode) {
       this.padletFormComponent = this.formContainer.createComponent(PadletFormComponent);
       this.padletFormComponent.instance.padlet = this.padlet;
+      this.padletFormComponent.instance.isUpdatingPadlet = true;
       this.padletFormComponent.instance.closeForm.subscribe(() => {
         this.isEditMode = false;
         this.padletFormComponent.destroy();
