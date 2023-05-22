@@ -20,6 +20,7 @@ const routes: Routes = [
   {path: 'padlets/:padletId/:entryId', component: EntryDetailsComponent, pathMatch: 'full'},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'profile', component: ProfileComponent, pathMatch: 'full'},
+  {path: 'users/:userId', component: ProfileComponent, pathMatch: 'full'},
   {path: 'admin', component: AdminComponent, pathMatch: 'full'},
   {path: '**', redirectTo: 'padlets'}, // könnte auch eine 404 Seite sein
 ];

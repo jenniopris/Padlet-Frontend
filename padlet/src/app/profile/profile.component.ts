@@ -3,6 +3,7 @@ import {PadletApiService} from '../shared/padlet-api.service';
 import {AuthenticationService} from '../shared/authentication.service';
 import {User} from '../shared/user';
 import {UserFactory} from "../shared/user-factory";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'pd-profile',
@@ -15,12 +16,17 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private ps: PadletApiService,
-    private authService: AuthenticationService
+    public authService: AuthenticationService,
+    private route: ActivatedRoute,
   ) {
   }
 
   ngOnInit() {
-    this.userId = this.authService.getCurrentUserId();
+    if(this.route.snapshot.params['userId']) {
+      this.userId = this.route.snapshot.params['userId'];
+    } else {
+      this.userId = this.authService.getCurrentUserId();
+    }
     this.loadUser();
   }
 

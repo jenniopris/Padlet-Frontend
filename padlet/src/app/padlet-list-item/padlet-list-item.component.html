@@ -15,9 +15,12 @@
 
     <div class="ui horizontal list">
       <div class="item">
-        <img class="ui mini circular image" src="/assets/molly.png">
+        <img class="ui mini circular image" alt="user" src="/assets/molly.png">
         <div class="content">
-          <div class="ui sub header">{{padlet.user.first_name}} {{padlet.user.last_name}}</div>
+          <div class="ui sub header">
+            <a *ngIf="padlet.user_id != 1" [routerLink]="'/users/' + padlet.user_id">{{padlet.user.first_name}} {{padlet.user.last_name}}</a>
+            <span *ngIf="padlet.user_id === 1">{{padlet.user.first_name}}</span>
+          </div>
           <p>{{padlet.is_public ? "Public" : "Private"}}</p>
         </div>
       </div>

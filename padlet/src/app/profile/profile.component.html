@@ -1,6 +1,6 @@
 <div class="ui container">
 
-  <h1 class="ui header">My profile</h1>
+  <h1 class="ui header">{{user.id === authService.getCurrentUserId() ? 'My' : user.first_name + '\'s'}} profile</h1>
   <div class="ui card">
 
     <div class="content">
@@ -12,7 +12,7 @@
       <p>Email: {{user.email}}</p>
       <p>Role: {{user.role}}</p>
     </div>
-    <div class="extra content">
+    <div *ngIf="user.id === authService.getCurrentUserId()" class="extra content">
       <button class="ui right floated button">
         <i class="setting icon"></i>
         Edit user
@@ -20,12 +20,13 @@
     </div>
   </div>
 
-  <h2>My Padlets</h2>
+  <h2>{{user.id === authService.getCurrentUserId() ? 'My' : user.first_name + '\'s'}} Padlets</h2>
+
   <p>Here come the padlets with the specific rights (viewer, editor, owner)</p>
   <h3>Owner rights</h3>
   <h3>Editor rights</h3>
   <h3>Viewer rights</h3>
 
-  <h2>Invites</h2>
+  <h2 *ngIf="user.id === authService.getCurrentUserId()">Invites</h2>
   <p>Here come the invites</p>
 </div>
