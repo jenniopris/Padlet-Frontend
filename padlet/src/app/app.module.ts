@@ -21,6 +21,7 @@ import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AdminComponent } from './admin/admin.component';
 import { SharingFormComponent } from './sharing-form/sharing-form.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SharingFormComponent } from './sharing-form/sharing-form.component';
     LoginComponent,
     AdminComponent,
     SharingFormComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

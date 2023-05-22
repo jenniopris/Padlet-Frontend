@@ -4,8 +4,9 @@
 </div>
 <router-outlet></router-outlet-->
 
-<div class="ui {{isLoggedIn()?'three':'two'}} item tabs menu">
+<div class="ui {{isLoggedIn()?'four':'two'}} item tabs menu">
   <a routerLink="/padlets" routerLinkActive="active" class="item">Home</a>
+  <a *ngIf="isLoggedIn()" routerLink="/profile" class="item">Profile</a>
   <a *ngIf="isLoggedIn()" routerLink="/admin" routerLinkActive="active"
      class="item">Administration</a>
   <a routerLink="/login" routerLinkActive="active"
