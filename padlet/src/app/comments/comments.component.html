@@ -1,19 +1,27 @@
 <div class="ui minimal comments">
   <h3 class="ui dividing header">Comments</h3>
-  <div *ngFor="let comment of comments" class="comment">
-    <a class="avatar">
-      <img src="assets/molly.png">
-    </a>
-    <div class="content">
-      <a class="author">{{comment.user.first_name}} {{comment.user.last_name}}</a>
-      <div class="metadata">
-        <span class="date">{{comment.created_at | date:'dd/MM/yy, HH:mm'}}</span>
-      </div>
-      <div class="text">
-        <p>{{comment.comment}}</p>
+  <div *ngIf="comments.length != 0; else noComments">
+    <div *ngFor="let comment of comments" class="comment">
+      <a class="avatar">
+        <img src="assets/molly.png">
+      </a>
+      <div class="content">
+        <a class="author">{{comment.user.first_name}} {{comment.user.last_name}}</a>
+        <div class="metadata">
+          <span class="date">{{comment.created_at | date:'dd/MM/yy, HH:mm'}}</span>
+        </div>
+        <div class="text">
+          <p>{{comment.comment}}</p>
+        </div>
       </div>
     </div>
   </div>
+
+  <ng-template #noComments>
+    <div class="text">
+      <p>No comments yet. <span *ngIf="authService.isLoggedIn()">Be the first to comment!</span></p>
+    </div>
+  </ng-template>
 
   <form *ngIf="authService.isLoggedIn()" class="ui reply form" [formGroup]="commentForm" (ngSubmit)="submitForm()">
     <div class="field">
