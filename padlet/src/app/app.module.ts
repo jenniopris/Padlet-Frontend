@@ -20,6 +20,7 @@ import {JwtInterceptorService} from "./shared/jwt-interceptor.service";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AdminComponent } from './admin/admin.component';
+import { SharingFormComponent } from './sharing-form/sharing-form.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AdminComponent } from './admin/admin.component';
     EntryFormComponent,
     LoginComponent,
     AdminComponent,
+    SharingFormComponent,
   ],
   imports: [
     BrowserModule,

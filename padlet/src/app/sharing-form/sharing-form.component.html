@@ -1,0 +1,48 @@
+<div class="ui container">
+  <h1 class="header">Invite members</h1>
+
+  <div class="ui search">
+    <div class="ui icon input">
+      <input class="prompt" type="text" placeholder="Search by name or email">
+      <i class="search icon"></i>
+    </div>
+    <div class="results"></div>
+  </div>
+
+  <br>
+
+  <form class="ui large form"[formGroup]="searchingForm">
+    <input type="hidden" formControlName="id">
+    <div class="field">
+      <label>Email</label>
+      <input formControlName="email">
+      <div *ngIf="errors['email']" class="ui negative message">{{ errors['email'] }}</div>
+    </div>
+
+    <div class="field">
+      <label>Role</label>
+      <div class="ui form">
+        <div class="field">
+          <label>Select the role for this member</label>
+          <select class="ui dropdown" formControlName="role">
+            <option value="" disabled selected>Select Role</option>
+            <option value="viewer">Viewer</option>
+            <option value="editor">Editor</option>
+            <option value="owner">Owner</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="ui button">
+      <i class="paper plane icon"></i>Invite
+    </button>
+  </form>
+
+  <div class="ui divider" style="margin-top: 2rem; margin-bottom: 1rem"></div>
+
+  <div [routerLink]="'../'" class="ui sticky bottom attached fluid icon button" style="bottom: 0;">
+    <i class="left chevron icon"></i>
+    Go back to your padlet
+  </div>
+</div>
