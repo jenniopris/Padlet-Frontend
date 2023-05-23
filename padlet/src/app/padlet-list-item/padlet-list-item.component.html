@@ -1,7 +1,7 @@
 <div class="ui card" style="margin-bottom: 1rem">
   <div class="content">
 
-    <button class="circular ui icon right floated button" *ngIf="padletListComponent.isEditMode" (click)="onDeleteClick()">
+    <button class="circular ui icon right floated button" *ngIf="padletListComponent.isEditMode && padlet.isEditableByCurrentUser" (click)="onDeleteClick()">
       <i class="delete icon"></i>
     </button>
 

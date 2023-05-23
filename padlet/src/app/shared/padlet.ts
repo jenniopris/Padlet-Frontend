@@ -11,6 +11,7 @@ export class Padlet {
     public user: User,
     public user_id: number,
     public created_at: Date,
+    public isEditableByCurrentUser?: boolean,
   ){
   }
 }

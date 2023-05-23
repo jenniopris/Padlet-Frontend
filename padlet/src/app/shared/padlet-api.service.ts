@@ -4,6 +4,7 @@ import {Entry, Padlet, User} from "./padlet";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {Comment} from "./comment";
 import {Rating} from "./rating";
+import {PadletUserRole} from "./padletUserRole";
 
 @Injectable()
 export class PadletApiService {
@@ -99,6 +100,21 @@ export class PadletApiService {
 
   getUserById(currentUserId: number) {
     return this.http.get(`${this.api}/users/${currentUserId}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  getInvitesByUserId(userId: number):Observable<Array<PadletUserRole>> {
+    return this.http.get<Array<PadletUserRole>>(`${this.api}/users/${userId}/invites`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  updateRole(role: PadletUserRole) {
+    return this.http.put(`${this.api}/roles`, role)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  deleteRole(id: number) {
+    return this.http.delete(`${this.api}/roles/${id}`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 

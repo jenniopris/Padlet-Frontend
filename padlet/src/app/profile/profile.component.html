@@ -33,8 +33,13 @@
     <p>Here come all public padlets of this user with links to them</p>
   </ng-template>
 
-  <div *ngIf="user.id === authService.getCurrentUserId()">
+  <div *ngIf="user.id === authService.getCurrentUserId() && invites.length">
     <h2>Invites</h2>
-    <p>Here come the invites</p>
+    <p>
+      <span *ngFor="let invite of invites">{{invite.padlet.name}}
+        <button (click)="onInviteAccept(invite)">Accept</button>
+        <button (click)="onInviteDecline(invite)">Decline</button>
+      </span>
+    </p>
   </div>
 </div>
