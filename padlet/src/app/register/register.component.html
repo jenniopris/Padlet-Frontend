@@ -1,0 +1,33 @@
+<div class="ui container">
+  <div>
+    <h1>Register</h1>
+    <form class="ui large form">
+      <div class="field">
+        <label>First name</label>
+        <input type="text" formControlName="firstName" required>
+      </div>
+      <div class="field">
+        <label>Last name</label>
+        <input type="text" formControlName="lastName" required>
+      </div>
+      <div class="field">
+        <label>E-Mail</label>
+        <input type="email" id="username" formControlName="username" required>
+      </div>
+      <div class="field">
+        <label>Passwort</label>
+        <input type="password" formControlName="password" required>
+      </div>
+      <div class="field">
+        <label>Confirm Passwort</label>
+        <input type="password" formControlName="password" required>
+      </div>
+      <div>
+        <a routerLink="/login">Already registered? Sign in instead.</a>
+      </div>
+      <br/>
+      <button type="submit" class="ui button">Register
+      </button>
+    </form>
+  </div>
+</div>
