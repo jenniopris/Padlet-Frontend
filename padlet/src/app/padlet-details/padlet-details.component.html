@@ -19,16 +19,16 @@
 
   <h1 class="ui header">{{ isEditMode ? "Update Padlet: " + padlet.name : padlet.name }}</h1>
 
-  <button *ngIf="padlet.user_id == authService.getCurrentUserId()" class="ui right floated button">
+  <!--button *ngIf="padlet.user_id == authService.getCurrentUserId()" class="ui right floated button">
     <i class="users icon"></i>Manage members
-  </button>
+  </button-->
 
   <div #form></div>
   <div *ngIf="!isEditMode">
     <h3>Here are your entries for this padlet:</h3>
 
-    <p>TODO: Sortierfunktion "nur eigene Entries anzeigen"<br>
-    Soll nur angezeigt werden wenn User eingeloggt ist</p>
+    <!--p>TODO: Sortierfunktion "nur eigene Entries anzeigen"<br>
+    Soll nur angezeigt werden wenn User eingeloggt ist</p-->
   </div>
 
   <div *ngIf="entries.length == 0" class="ui placeholder segment">

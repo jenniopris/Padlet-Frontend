@@ -42,6 +42,8 @@
         <h3 class="ui header">
           <div class="content">{{invite.padlet?.name ?? invite.padlet_id}}</div>
         </h3>
+        <p><b>Invited as:</b> {{invite.role}}</p>
+        <p><b>Invited by:</b> {{invite.invited_by ?? 'Unknown'}}</p>
         <button class="ui right floated red button" (click)="onInviteDecline(invite)">Decline</button>
         <button class="ui right floated green button" (click)="onInviteAccept(invite)">Accept</button>
       </div>
