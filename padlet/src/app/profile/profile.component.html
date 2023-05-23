@@ -10,7 +10,7 @@
         </div>
       </h3>
       <p>Email: {{user.email}}</p>
-      <p>Member since: {{user?.created_at | date:'dd.MM.yyyy' ?? 'unknown'}}</p>
+      <p>Member since: {{user.created_at | date:'dd.MM.yyyy'}}</p>
     </div>
     <div *ngIf="user.id === authService.getCurrentUserId()" class="extra content">
       <button class="ui right floated button">

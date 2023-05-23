@@ -1,10 +1,9 @@
 <div class="ui container">
 
-  <button *ngIf="authService.isLoggedIn() && padlet.isEditableByCurrentUser" class="ui right floated button" routerLink="new">
+  <button *ngIf="authService.isLoggedIn()" class="ui right floated button" routerLink="new">
     <i class="add icon"></i>Create new Entry
   </button>
 
-  <!-- TODO: delete and edit button only visible if user is owner of padlet or admin -->
   <button *ngIf="authService.isLoggedIn() && padlet.user_id == authService.getCurrentUserId()" class="ui right floated button" (click)="deletePadlet()">
     <i class="trash icon"></i>Delete Padlet
   </button>
@@ -26,9 +25,6 @@
   <div #form></div>
   <div *ngIf="!isEditMode">
     <h3>Here are your entries for this padlet:</h3>
-
-    <!--p>TODO: Sortierfunktion "nur eigene Entries anzeigen"<br>
-    Soll nur angezeigt werden wenn User eingeloggt ist</p-->
   </div>
 
   <div *ngIf="entries.length == 0" class="ui placeholder segment">
