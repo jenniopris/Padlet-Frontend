@@ -5,7 +5,8 @@ export class ErrorMessage {
     public text: string
   ) {}
 }
-export const SearchingFormErrorMessages = [
+export const SharingFormErrorMessages = [
   new ErrorMessage('email', 'required', 'An email must be provided'),
+  new ErrorMessage('email', 'email', 'Must be a valid email address'),
   new ErrorMessage('role', 'required', 'A role must be provided'),
 ];

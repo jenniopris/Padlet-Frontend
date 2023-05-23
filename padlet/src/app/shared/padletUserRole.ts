@@ -6,7 +6,7 @@ export class PadletUserRole {
     public padlet_id: number,
     public user_id: number,
     public role: string,
-    public padlet: Padlet
+    public padlet?: Padlet
   ) {
   }
 }

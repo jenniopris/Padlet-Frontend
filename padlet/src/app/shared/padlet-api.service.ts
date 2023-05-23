@@ -103,8 +103,18 @@ export class PadletApiService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  getUserBySearchTerm(searchTerm: string): Observable<User> {
+    return this.http.get<User>(`${this.api}/users/search/${searchTerm}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   getInvitesByUserId(userId: number):Observable<Array<PadletUserRole>> {
     return this.http.get<Array<PadletUserRole>>(`${this.api}/users/${userId}/invites`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  saveRole(role: PadletUserRole) {
+    return this.http.post(`${this.api}/roles`, role)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 

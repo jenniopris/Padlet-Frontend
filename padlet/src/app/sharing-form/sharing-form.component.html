@@ -11,8 +11,8 @@
 
   <br-->
 
-  <form class="ui large form" [formGroup]="searchingForm">
-    <input type="hidden" formControlName="id">
+  <form class="ui large form" [formGroup]="sharingForm" (ngSubmit)="submitForm()">
+    <input type="hidden" formControlName="padlet_id">
     <div class="field">
       <label>Email</label>
       <input formControlName="email">
@@ -26,15 +26,15 @@
           <label>Select the role for this member</label>
           <select class="ui dropdown" formControlName="role">
             <option value="" disabled selected>Select Role</option>
-            <option value="viewer">Viewer</option>
-            <option value="editor">Editor</option>
-            <option value="owner">Owner</option>
+            <option value="invite-viewer">Viewer</option>
+            <option value="invite-editor">Editor</option>
+            <!--option value="owner">Owner</option-->
           </select>
         </div>
       </div>
     </div>
 
-    <button type="submit" class="ui button">
+    <button type="submit" class="ui button" [disabled]="sharingForm.invalid">
       <i class="paper plane icon"></i>Invite
     </button>
   </form>
