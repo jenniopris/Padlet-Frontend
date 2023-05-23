@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'padlets', pathMatch: 'full'},
   {path: 'padlets', component: PadletListComponent, pathMatch: 'full'},
   {path: 'padlets/new', component: PadletFormComponent, pathMatch: 'full'},
+  {path: 'padlets/:padletId/:entryId/edit', component: EntryFormComponent, pathMatch: 'full'},
   {path: 'padlets/:padletId/new', component: EntryFormComponent, pathMatch: 'full'},
   {path: 'padlets/:padletId/share', component: SharingFormComponent, pathMatch: 'full'},
   {path: 'padlets/:id', component: PadletDetailsComponent, pathMatch: 'full'},

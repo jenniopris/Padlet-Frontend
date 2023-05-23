@@ -62,6 +62,11 @@ export class PadletApiService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  updateEntry(entry: Entry) {
+    return this.http.put(`${this.api}/entries/${entry.id}`, entry)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   createComment(comment: Comment) {
     return this.http.post(`${this.api}/comments`, comment)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));

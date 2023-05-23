@@ -1,10 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Entry} from "../shared/entry";
 import {EntryFactory} from "../shared/entry-factory";
 import {PadletApiService} from "../shared/padlet-api.service";
 import {ToastrService} from "ngx-toastr";
 import {AuthenticationService} from "../shared/authentication.service";
+import {PadletFormComponent} from "../padlet-form/padlet-form.component";
+import {EntryFormComponent} from "../entry-form/entry-form.component";
 
 @Component({
   selector: 'pd-entry-details',
@@ -29,7 +31,15 @@ export class EntryDetailsComponent implements OnInit {
   ngOnInit() {
     const params = this.route.snapshot.params;
     this.buttonRouterLink = '/padlets/' + params['padletId'];
-    this.ps.getEntryById(params['entryId']).subscribe(res => this.entry = res);
+    this.loadData(params['entryId']);
+  }
+
+  loadData(entryId: string) {
+    this.ps.getEntryById(entryId).subscribe(res => this.entry = res);
+  }
+
+  editEntry() {
+    this.router.navigate(['edit'], {relativeTo: this.route});
   }
 
   deleteEntry() {
