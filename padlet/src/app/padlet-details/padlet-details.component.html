@@ -19,20 +19,16 @@
 
   <h1 class="ui header">{{ isEditMode ? "Update Padlet: " + padlet.name : padlet.name }}</h1>
 
+  <button *ngIf="padlet.user_id == authService.getCurrentUserId()" class="ui right floated button">
+    <i class="users icon"></i>Manage members
+  </button>
+
   <div #form></div>
   <div *ngIf="!isEditMode">
     <h3>Here are your entries for this padlet:</h3>
 
-    <p>TODO: Bei Edit Padlet kann nur von Owner ausgeführt werden</p>
-
     <p>TODO: Sortierfunktion "nur eigene Entries anzeigen"<br>
     Soll nur angezeigt werden wenn User eingeloggt ist</p>
-
-    <p>TODO: Button, um User einladen zu können<br>
-    Soll nur angezeigt werden, wenn User eingeloggt ist</p>
-
-    <p>TODO: Button, um Teilnehmer zu verwalten<br>
-    Wird nur für Owner von Padlet angezeigt</p>
   </div>
 
   <div *ngIf="entries.length == 0" class="ui placeholder segment">
@@ -66,7 +62,11 @@
             <div class="item">
               <img class="ui mini circular image" src="/assets/molly.png">
               <div class="content">
-                <div class="ui sub header">{{entry.user.first_name}} {{entry.user.last_name}}</div>
+                <div class="ui sub header">
+                  <a *ngIf="entry.user_id != 1 && entry.user_id != authService.getCurrentUserId()" [routerLink]="'/users/' + entry.user_id">{{entry.user.first_name}} {{entry.user.last_name}}</a>
+                  <a *ngIf="entry.user_id === authService.getCurrentUserId()" [routerLink]="'/profile'">{{entry.user.first_name}} {{entry.user.last_name}}</a>
+                  <span *ngIf="entry.user_id === 1">{{entry.user.first_name}}</span>
+                </div>
               </div>
             </div>
           </div>

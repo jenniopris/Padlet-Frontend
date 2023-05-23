@@ -19,7 +19,11 @@
               <div class="item">
                 <img class="ui mini circular image" src="/assets/molly.png">
                 <div class="content">
-                  <div class="ui sub header">{{entry.user.first_name}} {{entry.user.last_name}}</div>
+                  <div class="ui sub header">
+                    <a *ngIf="entry.user_id != 1 && entry.user_id != authService.getCurrentUserId()" [routerLink]="'/users/' + entry.user_id">{{entry.user.first_name}} {{entry.user.last_name}}</a>
+                    <a *ngIf="entry.user_id === authService.getCurrentUserId()" [routerLink]="'/profile'">{{entry.user.first_name}} {{entry.user.last_name}}</a>
+                    <span *ngIf="entry.user_id === 1">{{entry.user.first_name}}</span>
+                  </div>
                 </div>
               </div>
             </div>
