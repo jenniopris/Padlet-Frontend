@@ -46,6 +46,7 @@ export class SharingFormComponent {
 
         this.ps.saveRole(invite).subscribe(res => {
           this.sharingForm.get('email')?.setValue('');
+          this.sharingForm.get('role')?.setValue('');
           this.errors = {};
           this.toastr.info('Invite sent!', 'Success!');
         });
