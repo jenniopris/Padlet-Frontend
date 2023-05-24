@@ -3,13 +3,11 @@
     <i class="add icon"></i>Create new Padlet
   </button>
 
-  <!-- TODO should only be visible if logged in -->
-  <!-- here users can delete their own padlets -->
-  <button *ngIf="authService.isLoggedIn() && padlets.length != 0" class="ui right floated button" (click)="isEditMode = !isEditMode">
+  <button *ngIf="authService.isLoggedIn() && padlets.length != 0" class="ui right floated button"
+          (click)="isEditMode = !isEditMode">
     <i [ngClass]="isEditMode ? 'save' : 'edit'" class="icon"></i>{{isEditMode ? "Save Changes" : "Edit Padlets"}}
   </button>
 
-  <!-- TODO User first_name and last_name -->
   <div *ngIf="authService.isLoggedIn(); else notLoggedIn">
     <h1>Welcome back, {{userName}}!</h1>
     <h3>Here are all your padlets:</h3>

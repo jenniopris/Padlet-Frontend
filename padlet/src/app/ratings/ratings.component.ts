@@ -56,8 +56,6 @@ export class RatingsComponent implements OnInit{
     rating.user_id = this.userId;
     rating.rating = this.selectedRating;
 
-    console.log(rating);
-
     if(this.rating){
       rating.id = this.rating.id;
       this.ps.updateRating(rating).subscribe(() => {

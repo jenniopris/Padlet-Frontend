@@ -59,7 +59,6 @@ export class CommentsComponent implements OnInit {
   }
 
   updateErrorMessages() {
-    console.log("Is form invalid? " + this.commentForm.invalid);
     this.errors = {};
     for (const message of CommentFormErrorMessages) {
       const control = this.commentForm.get(message.forControl);

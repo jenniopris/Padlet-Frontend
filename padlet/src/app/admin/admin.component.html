@@ -1,9 +1,8 @@
+<!-- Admin panel: overview of all users
+ (not needed and used in this application -->
+
 <div class="ui container">
-
   <h1 class="ui header">Admin panel</h1>
-
-  <p>TODO: Bei Klick auf User werden alle Padlets angezeigt, von denen User Owner ist</p>
-
   <h2>List of all users</h2>
   <div class="ui grid" style="margin-top: 2rem;">
     <div *ngFor="let user of users">
@@ -17,6 +16,7 @@
           <p>Email: {{ user.email }}</p>
           <p>Role: {{ user.role }}</p>
         </div>
+
         <div class="extra content">
           <button class="circular ui icon button">
             <i class="edit icon"></i>

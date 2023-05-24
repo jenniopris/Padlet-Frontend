@@ -1,26 +1,26 @@
 <div class="ui container">
 
-  <button *ngIf="authService.isLoggedIn() && (padlet.user_id == authService.getCurrentUserId() || padlet.user_id == 1)" class="ui right floated button" routerLink="new">
+  <button *ngIf="authService.isLoggedIn() && (padlet.user_id == authService.getCurrentUserId() || padlet.user_id == 1)"
+          class="ui right floated button" routerLink="new">
     <i class="add icon"></i>Create new Entry
   </button>
 
-  <button *ngIf="authService.isLoggedIn() && padlet.user_id == authService.getCurrentUserId()" class="ui right floated button" (click)="deletePadlet()">
+  <button *ngIf="authService.isLoggedIn() && padlet.user_id == authService.getCurrentUserId()"
+          class="ui right floated button" (click)="deletePadlet()">
     <i class="trash icon"></i>Delete Padlet
   </button>
 
-  <button *ngIf="authService.isLoggedIn() && padlet.isEditableByCurrentUser" class="ui right floated button" (click)="onEditClick()">
+  <button *ngIf="authService.isLoggedIn() && padlet.isEditableByCurrentUser" class="ui right floated button"
+          (click)="onEditClick()">
     <i [ngClass]="isEditMode ? 'cancel' : 'edit'" class="icon"></i>{{isEditMode ? "Stop editing" : "Edit Padlet"}}
   </button>
 
-  <button *ngIf="authService.isLoggedIn() && padlet.user_id == authService.getCurrentUserId()" class="ui icon right floated button" routerLink="share">
+  <button *ngIf="authService.isLoggedIn() && padlet.user_id == authService.getCurrentUserId()"
+          class="ui icon right floated button" routerLink="share">
     <i class="share icon"></i>
   </button>
 
   <h1 class="ui header">{{ isEditMode ? "Update Padlet: " + padlet.name : padlet.name }}</h1>
-
-  <!--button *ngIf="padlet.user_id == authService.getCurrentUserId()" class="ui right floated button">
-    <i class="users icon"></i>Manage members
-  </button-->
 
   <div #form></div>
   <div *ngIf="!isEditMode">
@@ -59,8 +59,10 @@
               <img class="ui mini circular image" src="/assets/molly.png">
               <div class="content">
                 <div class="ui sub header">
-                  <a *ngIf="entry.user_id != 1 && entry.user_id != authService.getCurrentUserId()" [routerLink]="'/users/' + entry.user_id">{{entry.user.first_name}} {{entry.user.last_name}}</a>
-                  <a *ngIf="entry.user_id === authService.getCurrentUserId()" [routerLink]="'/profile'">{{entry.user.first_name}} {{entry.user.last_name}}</a>
+                  <a *ngIf="entry.user_id != 1 && entry.user_id != authService.getCurrentUserId()"
+                     [routerLink]="'/users/' + entry.user_id">{{entry.user.first_name}} {{entry.user.last_name}}</a>
+                  <a *ngIf="entry.user_id === authService.getCurrentUserId()"
+                     [routerLink]="'/profile'">{{entry.user.first_name}} {{entry.user.last_name}}</a>
                   <span *ngIf="entry.user_id === 1">{{entry.user.first_name}}</span>
                 </div>
               </div>
@@ -88,16 +90,3 @@
   </div>
 
 </div>
-
-
-<!--div class="ui middle aligned selection divided list">
-  <a *ngFor="let entry of entries" class="item pd-entry-list-item"
-     [entry]="entry"
-     [routerLink]="entry.id.toString()">
-  </a>
-</div>
-
-<button [routerLink]="'/padlets'" class="ui labeled icon button">
-  <i class="left chevron icon"></i>
-  Zurück zur Padletliste
-</button-->

@@ -1,7 +1,8 @@
 <div class="ui card" style="margin-bottom: 1rem">
   <div class="content">
 
-    <button class="circular ui icon right floated button" *ngIf="padletListComponent.isEditMode && padlet.isEditableByCurrentUser" (click)="onDeleteClick()">
+    <button class="circular ui icon right floated button"
+            *ngIf="padletListComponent.isEditMode && padlet.isEditableByCurrentUser" (click)="onDeleteClick()">
       <i class="delete icon"></i>
     </button>
 
@@ -18,8 +19,10 @@
         <img class="ui mini circular image" alt="user" src="/assets/molly.png">
         <div class="content">
           <div class="ui sub header">
-            <a *ngIf="padlet.user_id != 1 && padlet.user_id != authService.getCurrentUserId()" [routerLink]="'/users/' + padlet.user_id">{{padlet.user.first_name}} {{padlet.user.last_name}}</a>
-            <a *ngIf="padlet.user_id === authService.getCurrentUserId()" [routerLink]="'/profile'">{{padlet.user.first_name}} {{padlet.user.last_name}}</a>
+            <a *ngIf="padlet.user_id != 1 && padlet.user_id != authService.getCurrentUserId()"
+               [routerLink]="'/users/' + padlet.user_id">{{padlet.user.first_name}} {{padlet.user.last_name}}</a>
+            <a *ngIf="padlet.user_id === authService.getCurrentUserId()"
+               [routerLink]="'/profile'">{{padlet.user.first_name}} {{padlet.user.last_name}}</a>
             <span *ngIf="padlet.user_id === 1">{{padlet.user.first_name}}</span>
           </div>
           <p>{{padlet.is_public ? "Public" : "Private"}}</p>

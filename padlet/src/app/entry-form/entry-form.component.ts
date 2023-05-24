@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PadletApiService} from "../shared/padlet-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -82,14 +82,6 @@ export class EntryFormComponent implements OnInit {
       });
     }
   }
-
-  /*
-    this.ps.createEntry(entry).subscribe(() => {
-      this.router.navigate(['/padlets', this.padletId], {relativeTo: this.route});
-    });
-
-    this.toastr.success("Entry created");
-    */
 
   updateErrorMessages() {
     this.errors = {};

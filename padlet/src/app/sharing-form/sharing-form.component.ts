@@ -57,7 +57,6 @@ export class SharingFormComponent {
   }
 
   updateErrorMessages() {
-    console.log("Is form invalid? " + this.sharingForm.invalid);
     this.errors = {};
     for (const message of SharingFormErrorMessages) {
       const control = this.sharingForm.get(message.forControl);

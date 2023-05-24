@@ -5,6 +5,7 @@ import {User} from '../shared/user';
 import {UserFactory} from "../shared/user-factory";
 import {ActivatedRoute} from "@angular/router";
 import {PadletUserRole} from "../shared/padletUserRole";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'pd-profile',
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit {
     private ps: PadletApiService,
     public authService: AuthenticationService,
     private route: ActivatedRoute,
+    public toastr: ToastrService,
   ) {
   }
 
@@ -46,12 +48,14 @@ export class ProfileComponent implements OnInit {
 
   onInviteAccept(invite: PadletUserRole) {
     invite.role = invite.role.substring(invite.role.indexOf('-')+1, invite.role.length);
+    this.toastr.success("Invite for padlet " + invite.padlet?.name + " accepted");
     this.ps.updateRole(invite).subscribe(res => {
       this.getInvites();
     });
   }
 
   onInviteDecline(invite: PadletUserRole) {
+    this.toastr.warning("Invite for padlet " + invite.padlet?.name + " declined");
     this.ps.deleteRole(invite.id).subscribe(res => {
       this.getInvites();
     });

@@ -20,21 +20,6 @@
     </div>
   </div>
 
-  <!--
-  <h2>{{user.id === authService.getCurrentUserId() ? 'My' : user.first_name + '\'s'}} Padlets</h2>
-
-  <div *ngIf="user.id === authService.getCurrentUserId(); else notLoggedIn">
-    <p>Here come the padlets with the specific rights (viewer, editor, owner) with links</p>
-    <h3>Owner rights</h3>
-    <h3>Editor rights</h3>
-    <h3>Viewer rights</h3>
-  </div>
-
-  <ng-template #notLoggedIn>
-    <p>Here come all public padlets of this user with links to them</p>
-  </ng-template>
-  -->
-
   <div *ngIf="user.id === authService.getCurrentUserId() && invites.length">
     <h2>Invites</h2>
     <div class="ui card" *ngFor="let invite of invites">

@@ -40,9 +40,7 @@ export class PadletDetailsComponent implements OnInit {
     this.ps.getEntriesById(padletId).subscribe(res => this.entries = res);
   }
 
-  /**
-   * Delete a padlet
-   */
+  // deletes a padlet
   deletePadlet() {
     if (confirm('Are you sure you want to delete this padlet (' + this.padlet.name + ')?')) {
       this.toastr.warning("Padlet deleted");
@@ -52,10 +50,7 @@ export class PadletDetailsComponent implements OnInit {
     }
   }
 
-  /**
-   * Delete an entry
-   * @param id
-   */
+  // deletes an entry
   onDeleteClick(id: number) {
     if (confirm('Delete ' + this.entries?.find(e => e.id === id)?.name  + '?' )) {
       this.toastr.warning("Entry deleted");

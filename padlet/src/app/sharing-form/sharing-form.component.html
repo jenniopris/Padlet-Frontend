@@ -1,16 +1,6 @@
 <div class="ui container">
   <h1 class="header">Invite members</h1>
 
-  <!--div class="ui search">
-    <div class="ui icon input">
-      <input class="prompt" type="text" placeholder="Search by name or email">
-      <i class="search icon"></i>
-    </div>
-    <div class="results"></div>
-  </div>
-
-  <br-->
-
   <form class="ui large form" [formGroup]="sharingForm" (ngSubmit)="submitForm()">
     <input type="hidden" formControlName="padlet_id">
     <div class="field">
@@ -28,7 +18,6 @@
             <option value="" disabled selected>Select Role</option>
             <option value="invite-viewer">Viewer</option>
             <option value="invite-editor">Editor</option>
-            <!--option value="owner">Owner</option-->
           </select>
         </div>
       </div>

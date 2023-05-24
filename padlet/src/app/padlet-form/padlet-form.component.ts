@@ -1,10 +1,9 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PadletFactory} from "../shared/padlet-factory";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PadletApiService} from "../shared/padlet-api.service";
 import {PadletFormErrorMessages} from "./padlet-form-error-messages";
-import {Padlet} from "../shared/padlet";
 import {AuthenticationService} from "../shared/authentication.service";
 import {ToastrService} from "ngx-toastr";
 
@@ -66,21 +65,13 @@ export class PadletFormComponent implements OnInit {
         this.padlet = PadletFactory.empty();
         this.padletForm.reset(PadletFactory.empty());
         this.router.navigate(["/padlets"], {
-          relativeTo: this.route});
+          relativeTo: this.route
+        });
       });
     }
-
-    /*
-    this.ps.createPadlet(padlet).subscribe(() => {
-      this.router.navigate(['/padlets'], {relativeTo: this.route});
-    });
-
-    this.toastr.success("Padlet created");
-     */
   }
 
   updateErrorMessages() {
-    //console.log("Is form invalid? " + this.padletForm.invalid);
     this.errors = {};
     for (const message of PadletFormErrorMessages) {
       const control = this.padletForm.get(message.forControl);

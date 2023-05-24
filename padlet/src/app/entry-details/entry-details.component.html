@@ -38,7 +38,6 @@
               <i class="close icon"></i>Close
             </button>
 
-            <!-- TODO Delete and edit button are only shown if user is owner of this entry-->
             <div *ngIf="authService.isLoggedIn()">
               <button class="circular ui icon button" (click)="deleteEntry()">
                 <i class="trash icon"></i>
@@ -63,10 +62,3 @@
   </div>
 
 </div>
-
-<!-- TODO Buttons for saving or discarding changes -->
-<!--div class="ui buttons">
-  <button class="ui button">Discard</button>
-  <div class="or"></div>
-  <button class="ui positive button">Save</button>
-</div-->

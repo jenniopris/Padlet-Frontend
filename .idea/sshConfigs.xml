@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="dedi50.your-server.de" id="7a5f9f78-21ba-45ae-b3b2-b41ba563b327" port="22" nameFormat="DESCRIPTIVE" username="sstud646" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="dedi50.your-server.de" id="a1492e0c-e609-4c2e-a907-51f5659d6133" port="222" nameFormat="DESCRIPTIVE" username="sstud646" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8309c5b4-a3a5-4d76-9b19-3eb16c682fe0" name="HETZNER">
+        <fileTransfer rootFolder="/public_html/padletapp" accessType="SFTP" host="dedi50.your-server.de" port="22" sshConfigId="7a5f9f78-21ba-45ae-b3b2-b41ba563b327" sshConfig="sstud646@dedi50.your-server.de:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

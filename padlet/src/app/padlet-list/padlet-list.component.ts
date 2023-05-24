@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Padlet, User} from "../shared/padlet";
+import {Padlet} from "../shared/padlet";
 import {PadletApiService} from "../shared/padlet-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../shared/authentication.service";

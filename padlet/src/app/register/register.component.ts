@@ -42,7 +42,6 @@ export class RegisterComponent implements OnInit {
       password: ["", Validators.required],
       confirmPassword: ["", Validators.required]
     });
-    //this.checkPassword();
     this.registerForm.valueChanges.subscribe(() => this.updateErrorMessages());
   }
   async submitForm() {
@@ -58,7 +57,6 @@ export class RegisterComponent implements OnInit {
       );
 
       this.authService.register(newUser).subscribe((res) => {
-        console.log(res);
         this.toastr.success("User created");
         this.user = UserFactory.empty();
         this.registerForm.reset(UserFactory.empty());
@@ -76,10 +74,13 @@ export class RegisterComponent implements OnInit {
 
   checkPassword() {
     const val = this.registerForm.value;
-    if (val.password && val.confirmPassword) {
-      return val.password === val.confirmPassword;
+    if (val.password != val.confirmPassword) {
+      this.toastr.error('Passwords do not match!', 'Error');
+      this.registerForm.get('confirmPassword')?.setValue('');
+      return false;
+    } else {
+      return true;
     }
-    return false;
   }
 
   async encryptPassword() {
