@@ -6,7 +6,12 @@
         <img src="assets/molly.png">
       </a>
       <div class="content">
-        <a class="author">{{comment.user.first_name}} {{comment.user.last_name}}</a>
+        <a class="author">
+          <a *ngIf="comment.user_id != 1 && comment.user_id != authService.getCurrentUserId()"
+             [routerLink]="'/users/' + comment.user_id">{{comment.user.first_name}} {{comment.user.last_name}}</a>
+          <a *ngIf="comment.user_id === authService.getCurrentUserId()"
+             [routerLink]="'/profile'">{{comment.user.first_name}} {{comment.user.last_name}}</a>
+          <span *ngIf="comment.user_id === 1">{{comment.user.first_name}}</span></a>
         <div class="metadata">
           <span class="date">{{comment.created_at | date:'dd/MM/yy, HH:mm'}}</span>
         </div>
