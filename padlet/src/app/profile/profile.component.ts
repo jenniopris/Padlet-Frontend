@@ -30,7 +30,9 @@ export class ProfileComponent implements OnInit {
       this.userId = this.authService.getCurrentUserId();
     }
     this.loadUser();
-    this.getInvites();
+    if(this.userId == this.authService.getCurrentUserId()) {
+      this.getInvites();
+    }
   }
 
   loadUser() {

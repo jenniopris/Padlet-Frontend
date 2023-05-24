@@ -1,6 +1,6 @@
 <div class="ui container">
 
-  <button *ngIf="authService.isLoggedIn()" class="ui right floated button" routerLink="new">
+  <button *ngIf="authService.isLoggedIn() && (padlet.user_id == authService.getCurrentUserId() || padlet.user_id == 1)" class="ui right floated button" routerLink="new">
     <i class="add icon"></i>Create new Entry
   </button>
 
@@ -48,7 +48,7 @@
             <div class="content">{{entry.name}}</div>
           </h2>
 
-          <p>{{entry.content}}</p>
+          <p style="color: black;">{{entry.content}}</p>
 
           <div class="metadata">
             <span class="date">{{entry.created_at | date:'dd/MM/yy, HH:mm'}}</span>
