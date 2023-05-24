@@ -3,7 +3,7 @@ export class User {
               public first_name: string,
               public last_name: string,
               public email: string,
-              public role: string,
+              public role?: string,
               public created_at?: Date,
               private password?: string) {
   }

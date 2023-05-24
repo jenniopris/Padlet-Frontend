@@ -2,12 +2,11 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PadletApiService} from "../shared/padlet-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Entry} from "../shared/padlet";
+import {Entry} from "../shared/entry";
 import {EntryFactory} from "../shared/entry-factory";
 import {EntryFormErrorMessages} from "./entry-form-error-messages";
 import {AuthenticationService} from "../shared/authentication.service";
 import {ToastrService} from "ngx-toastr";
-import {PadletFactory} from "../shared/padlet-factory";
 
 @Component({
   selector: 'pd-entry-form',

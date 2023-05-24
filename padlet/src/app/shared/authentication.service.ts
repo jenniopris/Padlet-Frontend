@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import jwt_decode from "jwt-decode";
+import {User} from "./user";
 interface Token {
   exp: number;
   user: {
@@ -18,6 +19,11 @@ export class AuthenticationService {
       password: password
     });
   }
+
+  register(user: User) {
+    return this.http.post(`${this.api}/register`, user);
+  }
+
   public getCurrentUserId() {
     return Number.parseInt(<string>sessionStorage.getItem("userId"));
   }
